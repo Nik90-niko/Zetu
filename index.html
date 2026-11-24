@@ -3,33 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zetu</title>
+<title>Zetu Social</title>
 
 <style>
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-body {
-    background: #f0f2f5;
-    color: #1c1e21;
-}
-
 :root {
-    --green: #064e3b;
-    --green2: #087f5b;
-    --lightgreen: #d1fae5;
-    --white: #ffffff;
+    --green: #003d2a;
+    --dark: #002b1e;
+    --light: #00d084;
+    --border: #08784d;
 }
 
-/* HEADER */
-.header {
-    background: var(--green);
+body {
+    background: #002d20;
     color: white;
-    padding: 12px 15px;
+}
+
+.header {
+    background: linear-gradient(135deg, #003b29, #005538);
+    padding: 12px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -37,14 +35,21 @@ body {
 
 .header-top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 37px;
     font-weight: bold;
-    color: white;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.logo-icon {
+    color: #00e58a;
+    font-size: 35px;
 }
 
 .header-icons {
@@ -52,68 +57,65 @@ body {
     gap: 10px;
 }
 
-.icon-button {
-    background: #ffffff25;
-    width: 40px;
-    height: 40px;
+.icon {
+    background: #ffffff15;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -4px;
+    right: -3px;
+    background: #ff304f;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search {
     margin-top: 10px;
     width: 100%;
-    padding: 11px 15px;
-    border-radius: 25px;
+    padding: 12px 15px;
     border: none;
+    border-radius: 30px;
+    background: #ffffff20;
+    color: white;
+    font-size: 16px;
     outline: none;
-    font-size: 15px;
 }
 
-/* NAVIGATION */
-.nav {
-    background: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+.search::placeholder {
+    color: white;
 }
 
-.nav-item {
-    font-size: 22px;
-    cursor: pointer;
-    padding: 5px 12px;
-    color: #65676b;
-}
-
-.nav-item.active {
-    color: var(--green2);
-    border-bottom: 3px solid var(--green2);
-}
-
-/* STORIES */
 .stories {
-    background: white;
-    padding: 12px;
     display: flex;
-    gap: 10px;
     overflow-x: auto;
-    margin-bottom: 10px;
+    gap: 10px;
+    padding: 12px;
+    background: #003b29;
 }
 
 .story {
     min-width: 105px;
-    height: 170px;
-    border-radius: 12px;
-    position: relative;
+    height: 165px;
+    border-radius: 18px;
     overflow: hidden;
-    background: linear-gradient(135deg, #064e3b, #10b981);
-    color: white;
-    cursor: pointer;
+    position: relative;
+    border: 2px solid #07854e;
+    background: #064e3b;
 }
 
 .story img {
@@ -122,40 +124,64 @@ body {
     object-fit: cover;
 }
 
+.story::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: linear-gradient(transparent, #000b);
+}
+
 .story-name {
     position: absolute;
-    bottom: 8px;
+    bottom: 10px;
     left: 8px;
-    font-size: 12px;
+    z-index: 2;
+    font-size: 14px;
     font-weight: bold;
-    text-shadow: 0 1px 4px black;
 }
 
-.story-add {
-    background: white;
-    color: #222;
+.create-story {
+    background: #e7e7e7;
+    color: #111;
 }
 
-.story-add .add-circle {
+.create-story img {
+    height: 105px;
+}
+
+.plus {
     position: absolute;
-    bottom: 45px;
-    left: 35px;
+    top: 88px;
+    left: 34px;
+    background: #00c878;
+    color: white;
     width: 35px;
     height: 35px;
-    background: var(--green2);
     border-radius: 50%;
-    color: white;
     font-size: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
-/* CREATE POST */
+.create-story .story-name {
+    color: #111;
+    text-align: center;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+}
+
 .create-post {
-    background: white;
+    background: #00452e;
     padding: 15px;
-    margin-bottom: 10px;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: 0 3px 8px #0005;
 }
 
 .create-top {
@@ -165,16 +191,12 @@ body {
 }
 
 .avatar {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: var(--lightgreen);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
     overflow: hidden;
+    background: #d1fae5;
+    flex-shrink: 0;
 }
 
 .avatar img {
@@ -184,12 +206,12 @@ body {
 }
 
 .post-input {
-    flex: 1;
-    padding: 12px 15px;
-    background: #f0f2f5;
-    border-radius: 25px;
+    width: 100%;
     border: none;
-    font-size: 15px;
+    border-radius: 30px;
+    padding: 17px;
+    background: #f4f5f5;
+    font-size: 16px;
     outline: none;
 }
 
@@ -197,20 +219,34 @@ body {
     display: flex;
     justify-content: space-around;
     margin-top: 15px;
+    border-top: 1px solid #ffffff30;
     padding-top: 12px;
-    border-top: 1px solid #eee;
 }
 
-.create-action {
+.create-actions div {
     cursor: pointer;
-    font-size: 14px;
-    color: #555;
+    font-weight: bold;
+    padding: 5px;
 }
 
-/* POSTS */
+.post-button {
+    background: #00a86b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+    display: none;
+}
+
 .post {
-    background: white;
-    margin-bottom: 10px;
+    background: #003d29;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #08784d;
+    overflow: hidden;
 }
 
 .post-header {
@@ -225,24 +261,18 @@ body {
 }
 
 .post-user strong {
-    display: block;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .post-time {
-    color: #65676b;
-    font-size: 12px;
-    margin-top: 3px;
-}
-
-.post-menu {
-    font-size: 22px;
-    cursor: pointer;
+    font-size: 13px;
+    color: #c5d8ce;
+    margin-top: 4px;
 }
 
 .post-text {
     padding: 0 12px 12px;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.5;
 }
 
@@ -253,37 +283,32 @@ body {
     object-fit: cover;
 }
 
-.post-stats {
+.stats {
     display: flex;
     justify-content: space-between;
-    padding: 10px 12px;
-    color: #65676b;
+    padding: 10px;
     font-size: 13px;
+    color: #ddd;
 }
 
-.post-actions {
+.actions {
     display: flex;
-    border-top: 1px solid #eee;
-    margin: 0 10px;
+    border-top: 1px solid #ffffff25;
 }
 
-.post-actions button {
+.actions button {
     flex: 1;
+    padding: 13px 3px;
+    background: transparent;
+    color: white;
     border: none;
-    background: white;
-    padding: 12px 4px;
-    font-size: 14px;
     font-weight: bold;
-    color: #65676b;
+    font-size: 14px;
     cursor: pointer;
 }
 
-.post-actions button:hover {
-    background: #f5f5f5;
-}
-
-.post-actions button.liked {
-    color: var(--green2);
+.actions button.liked {
+    color: #00e58a;
 }
 
 .comments {
@@ -292,108 +317,132 @@ body {
 
 .comment-input {
     width: 100%;
-    border: none;
-    background: #f0f2f5;
     padding: 12px;
     border-radius: 25px;
-    outline: none;
+    border: none;
+    background: #f0f2f5;
 }
 
-/* SPONSORED */
-.sponsored {
-    background: white;
-    margin-bottom: 10px;
+.comment {
+    padding: 10px;
+    background: #ffffff15;
+    border-radius: 10px;
+    margin-top: 8px;
 }
 
-.sponsored-label {
-    padding: 10px 12px;
-    color: #777;
+/* AD */
+
+.ad {
+    margin: 10px;
+    background: linear-gradient(120deg, #00663e, #00a45e);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.ad-label {
+    padding: 10px;
+    color: #ddd;
     font-size: 12px;
 }
 
-.ad-banner {
-    background: linear-gradient(135deg, #064e3b, #10b981);
-    padding: 25px 15px;
-    color: white;
-    text-align: center;
+.ad-content {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
 }
 
-.ad-banner h2 {
-    font-size: 25px;
-    margin-bottom: 8px;
-}
-
-.ad-banner button {
+.ad-logo {
+    width: 65px;
+    height: 65px;
     background: white;
-    color: var(--green);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 7px;
+    color: #00a65a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
     font-weight: bold;
-    margin-top: 12px;
 }
 
-/* BOTTOM NAV */
+.ad-info {
+    flex: 1;
+}
+
+.ad-info h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.ad-info p {
+    font-size: 14px;
+}
+
+.ad-button {
+    background: white;
+    color: #005b35;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
     display: flex;
     justify-content: space-around;
-    padding: 8px 0;
-    border-top: 1px solid #ddd;
+    background: #002f21;
+    border-top: 1px solid #08784d;
+    padding: 8px 0 5px;
     z-index: 100;
 }
 
 .bottom-item {
     text-align: center;
-    font-size: 11px;
-    color: #65676b;
+    color: #ddd;
+    font-size: 12px;
     cursor: pointer;
+    flex: 1;
 }
 
 .bottom-item span {
     display: block;
-    font-size: 22px;
+    font-size: 25px;
     margin-bottom: 3px;
 }
 
 .bottom-item.active {
-    color: var(--green2);
+    color: #00d084;
 }
 
 .page {
-    padding-bottom: 75px;
+    padding-bottom: 85px;
 }
 
 .toast {
     position: fixed;
-    bottom: 80px;
+    bottom: 85px;
     left: 50%;
     transform: translateX(-50%);
-    background: #222;
-    color: white;
+    background: #111;
     padding: 12px 20px;
-    border-radius: 25px;
-    display: none;
+    border-radius: 30px;
     z-index: 999;
+    display: none;
 }
 
 .hidden {
     display: none;
 }
 
-@media (min-width: 700px) {
+@media(min-width:700px) {
     .page {
         max-width: 600px;
         margin: auto;
-    }
-
-    .header {
-        padding-left: calc((100% - 600px) / 2);
-        padding-right: calc((100% - 600px) / 2);
     }
 }
 </style>
@@ -401,39 +450,46 @@ body {
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
+<header class="header">
+
     <div class="header-top">
-        <div class="logo">Zetu</div>
+
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            Zetu
+        </div>
 
         <div class="header-icons">
-            <div class="icon-button" onclick="showToast('Search')">🔍</div>
-            <div class="icon-button" onclick="showToast('Messages')">💬</div>
-            <div class="icon-button" onclick="showToast('Notifications')">🔔</div>
+            <div class="icon" onclick="showToast('Search')">🔍</div>
+            <div class="icon" onclick="showToast('Messages')">
+                💬
+                <span class="badge">3</span>
+            </div>
+            <div class="icon" onclick="showToast('Notifications')">
+                🔔
+                <span class="badge">5</span>
+            </div>
+            <div class="avatar">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80">
+            </div>
         </div>
+
     </div>
 
-    <input class="search" placeholder="Search Zetu..." oninput="searchPosts(this.value)">
-</div>
+    <input class="search" id="search" placeholder="🔍  Search Zetu..." oninput="searchPosts(this.value)">
 
-<!-- TOP NAV -->
-<div class="nav">
-    <div class="nav-item active" onclick="goPage('home',this)">🏠</div>
-    <div class="nav-item" onclick="goPage('followers',this)">👥</div>
-    <div class="nav-item" onclick="goPage('videos',this)">🎥</div>
-    <div class="nav-item" onclick="goPage('market',this)">🛒</div>
-    <div class="nav-item" onclick="goPage('menu',this)">☰</div>
-</div>
+</header>
 
 <div class="page" id="home">
 
 <!-- STORIES -->
+
 <div class="stories">
 
-    <div class="story story-add" onclick="document.getElementById('storyUpload').click()">
-        <div style="height:110px;background:#e5e7eb;"></div>
-        <div class="add-circle">+</div>
-        <div class="story-name" style="color:#222;text-shadow:none;">Create story</div>
+    <div class="story create-story" onclick="document.getElementById('storyUpload').click()">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80">
+        <div class="plus">+</div>
+        <div class="story-name">Create story</div>
     </div>
 
     <div class="story">
@@ -461,75 +517,71 @@ body {
 <input type="file" id="storyUpload" accept="image/*" hidden>
 
 <!-- CREATE POST -->
-<div class="create-post">
-    <div class="create-top">
-        <div class="avatar">👤</div>
 
-        <input
-            id="postText"
-            class="post-input"
-            placeholder="What's on your mind?"
-        >
+<div class="create-post">
+
+    <div class="create-top">
+        <div class="avatar">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80">
+        </div>
+
+        <input id="postText" class="post-input" placeholder="What's on your mind?" oninput="showPostButton()">
     </div>
 
     <div class="create-actions">
-        <div class="create-action" onclick="document.getElementById('photoUpload').click()">
+
+        <div onclick="document.getElementById('photoUpload').click()">
             🖼️ Photo
         </div>
 
-        <div class="create-action" onclick="document.getElementById('videoUpload').click()">
+        <div onclick="document.getElementById('videoUpload').click()">
             🎥 Video
         </div>
 
-        <div class="create-action" onclick="showToast('Live video coming soon')">
+        <div onclick="showToast('Live video coming soon')">
             📹 Live
         </div>
+
     </div>
 
-    <button onclick="createPost()" style="
-        width:100%;
-        margin-top:12px;
-        background:#064e3b;
-        color:white;
-        padding:12px;
-        border:none;
-        border-radius:8px;
-        font-weight:bold;
-    ">Post</button>
+    <button class="post-button" id="postButton" onclick="createPost()">Post</button>
+
 </div>
 
 <input type="file" id="photoUpload" accept="image/*" hidden>
 <input type="file" id="videoUpload" accept="video/*" hidden>
 
-<!-- POST 1 -->
+<!-- POST -->
+
 <div class="post">
 
     <div class="post-header">
-        <div class="avatar">👩</div>
+        <div class="avatar">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80">
+        </div>
 
         <div class="post-user">
             <strong>Mercy Njeri</strong>
             <div class="post-time">2 hours ago · 🌍</div>
         </div>
 
-        <div class="post-menu">•••</div>
+        <div onclick="showToast('Post options')" style="cursor:pointer;font-size:22px">•••</div>
     </div>
 
     <div class="post-text">
-        Good morning everyone! ❤️
-        Wishing you a beautiful and blessed day.
+        Good morning everyone! ❤️<br>
+        Wishing you a beautiful and blessed day.<br>
         Remember to keep believing in yourself! 🌿
     </div>
 
-    <img class="post-image"
-         src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80">
+    <img class="post-image" src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80">
 
-    <div class="post-stats">
-        <span class="likes-count">👍 124</span>
+    <div class="stats">
+        <span class="likes-count">👍 ❤️ 124</span>
         <span>18 comments · 5 shares</span>
     </div>
 
-    <div class="post-actions">
+    <div class="actions">
         <button onclick="likePost(this)">👍 Like</button>
         <button onclick="commentPost(this)">💬 Comment</button>
         <button onclick="sharePost()">↗ Share</button>
@@ -538,19 +590,30 @@ body {
 </div>
 
 <!-- ADVERTISEMENT -->
-<div class="sponsored">
-    <div class="sponsored-label">Sponsored · Advertisement</div>
 
-    <div class="ad-banner">
-        <h2>Pesa Loan</h2>
-        <p>Fast and convenient financial services.</p>
-        <button onclick="window.open('https://example.com','_blank')">
+<div class="ad">
+
+    <div class="ad-label">Sponsored · Advertisement</div>
+
+    <div class="ad-content">
+
+        <div class="ad-logo">P</div>
+
+        <div class="ad-info">
+            <h2>Pesa Loan</h2>
+            <p>Fast and convenient financial services.</p>
+        </div>
+
+        <button class="ad-button" onclick="window.open('https://example.com','_blank')">
             Learn More
         </button>
+
     </div>
+
 </div>
 
-<!-- POST 2 -->
+<!-- SECOND POST -->
+
 <div class="post">
 
     <div class="post-header">
@@ -560,8 +623,6 @@ body {
             <strong>John Kamau</strong>
             <div class="post-time">5 hours ago · 🌍</div>
         </div>
-
-        <div class="post-menu">•••</div>
     </div>
 
     <div class="post-text">
@@ -569,12 +630,12 @@ body {
         Keep going, your time is coming! 💚
     </div>
 
-    <div class="post-stats">
+    <div class="stats">
         <span class="likes-count">👍 45</span>
         <span>6 comments</span>
     </div>
 
-    <div class="post-actions">
+    <div class="actions">
         <button onclick="likePost(this)">👍 Like</button>
         <button onclick="commentPost(this)">💬 Comment</button>
         <button onclick="sharePost()">↗ Share</button>
@@ -585,42 +646,42 @@ body {
 </div>
 
 <!-- OTHER PAGES -->
+
 <div class="page hidden" id="followers">
-    <div class="post" style="padding:20px;">
+    <div class="post" style="padding:20px">
         <h2>👥 Followers</h2>
-        <p style="margin-top:15px;">Discover people and grow your followers.</p>
-        <button onclick="showToast('People discovery coming soon')"
-        style="margin-top:15px;background:#064e3b;color:white;padding:12px;border:0;border-radius:8px;">
+        <p style="margin-top:15px">Discover people and grow your followers.</p>
+        <button onclick="showToast('Discover people')" style="padding:12px;margin-top:15px;background:#00a86b;color:white;border:0;border-radius:8px">
         Find People
         </button>
     </div>
 </div>
 
 <div class="page hidden" id="videos">
-    <div class="post" style="padding:20px;">
+    <div class="post" style="padding:20px">
         <h2>🎥 Videos</h2>
-        <p style="margin-top:15px;">Watch videos shared on Zetu.</p>
+        <p style="margin-top:15px">Watch videos shared on Zetu.</p>
     </div>
 </div>
 
 <div class="page hidden" id="market">
-    <div class="post" style="padding:20px;">
+    <div class="post" style="padding:20px">
         <h2>🛒 Marketplace</h2>
-        <p style="margin-top:15px;">Buy and sell products.</p>
+        <p style="margin-top:15px">Buy and sell products.</p>
     </div>
 </div>
 
 <div class="page hidden" id="menu">
-    <div class="post" style="padding:20px;">
+    <div class="post" style="padding:20px">
         <h2>☰ Menu</h2>
-        <p style="margin-top:15px;">Your Zetu menu</p>
-        <p style="margin-top:15px;">👤 Profile</p>
-        <p style="margin-top:15px;">⚙️ Settings</p>
-        <p style="margin-top:15px;">🔒 Privacy</p>
+        <p style="margin-top:15px">👤 Profile</p>
+        <p style="margin-top:15px">⚙️ Settings</p>
+        <p style="margin-top:15px">🔒 Privacy</p>
     </div>
 </div>
 
-<!-- BOTTOM NAV -->
+<!-- BOTTOM NAVIGATION -->
+
 <div class="bottom-nav">
 
     <div class="bottom-item active" onclick="goPage('home',this)">
@@ -632,7 +693,7 @@ body {
     </div>
 
     <div class="bottom-item" onclick="goPage('videos',this)">
-        <span>🎥</span>Videos
+        <span>▶️</span>Videos
     </div>
 
     <div class="bottom-item" onclick="goPage('market',this)">
@@ -650,25 +711,30 @@ body {
 <script>
 
 /* NAVIGATION */
+
 function goPage(page, element) {
+
     document.querySelectorAll('.page').forEach(p => {
         p.classList.add('hidden');
     });
 
     document.getElementById(page).classList.remove('hidden');
 
-    document.querySelectorAll('.nav-item, .bottom-item').forEach(n => {
+    document.querySelectorAll('.bottom-item').forEach(n => {
         n.classList.remove('active');
     });
 
-    if(element) element.classList.add('active');
+    element.classList.add('active');
 
     window.scrollTo(0,0);
 }
 
 /* TOAST */
+
 function showToast(message) {
+
     const toast = document.getElementById('toast');
+
     toast.innerText = message;
     toast.style.display = 'block';
 
@@ -678,34 +744,45 @@ function showToast(message) {
 }
 
 /* LIKE */
+
 function likePost(button) {
+
     button.classList.toggle('liked');
 
     const post = button.closest('.post');
     const count = post.querySelector('.likes-count');
 
+    let number = parseInt(count.innerText.replace(/\D/g,'')) || 0;
+
     if(button.classList.contains('liked')) {
+        number++;
         button.innerHTML = '💚 Liked';
-        count.innerText = '💚 ' + (parseInt(count.innerText.replace(/\D/g,'')) + 1);
     } else {
+        number--;
         button.innerHTML = '👍 Like';
-        count.innerText = '👍 ' + (parseInt(count.innerText.replace(/\D/g,'')) - 1);
     }
+
+    count.innerText = '👍 ' + number;
 }
 
 /* COMMENT */
+
 function commentPost(button) {
+
     const post = button.closest('.post');
 
     let box = post.querySelector('.comments');
 
     if(!box) {
+
         box = document.createElement('div');
         box.className = 'comments';
 
         box.innerHTML = `
-            <input class="comment-input" placeholder="Write a comment..."
+            <input class="comment-input"
+            placeholder="Write a comment..."
             onkeydown="if(event.key==='Enter') addComment(this)">
+
             <div class="comment-list"></div>
         `;
 
@@ -716,10 +793,12 @@ function commentPost(button) {
 }
 
 function addComment(input) {
-    if(input.value.trim() === '') return;
 
-    const comment = document.createElement('p');
-    comment.style.padding = '8px';
+    if(!input.value.trim()) return;
+
+    const comment = document.createElement('div');
+
+    comment.className = 'comment';
     comment.innerText = '👤 ' + input.value;
 
     input.parentElement.querySelector('.comment-list').appendChild(comment);
@@ -728,41 +807,70 @@ function addComment(input) {
 }
 
 /* SHARE */
+
 function sharePost() {
+
     if(navigator.share) {
+
         navigator.share({
             title: 'Zetu',
             text: 'Check out this post on Zetu!'
         });
+
     } else {
-        showToast('Share feature available on your device');
+
+        showToast('Sharing is available on your device');
     }
 }
 
+/* SHOW POST BUTTON */
+
+function showPostButton() {
+
+    const text = document.getElementById('postText').value;
+
+    document.getElementById('postButton').style.display =
+        text.trim() ? 'block' : 'none';
+}
+
 /* CREATE POST */
+
 function createPost() {
+
     const text = document.getElementById('postText');
     const photo = document.getElementById('photoUpload');
+    const video = document.getElementById('videoUpload');
 
-    if(text.value.trim() === '' && !photo.files.length) {
-        showToast('Write something or add a photo!');
+    if(!text.value.trim() && !photo.files.length && !video.files.length) {
+
+        showToast('Write something or add media!');
         return;
     }
 
-    const post = document.createElement('div');
-    post.className = 'post';
-
-    let imageHTML = '';
+    let mediaHTML = '';
 
     if(photo.files.length) {
-        const imageURL = URL.createObjectURL(photo.files[0]);
 
-        imageHTML = `<img class="post-image" src="${imageURL}">`;
+        const url = URL.createObjectURL(photo.files[0]);
+
+        mediaHTML = `<img class="post-image" src="${url}">`;
     }
+
+    if(video.files.length) {
+
+        const url = URL.createObjectURL(video.files[0]);
+
+        mediaHTML = `<video class="post-image" controls src="${url}"></video>`;
+    }
+
+    const post = document.createElement('div');
+
+    post.className = 'post';
 
     post.innerHTML = `
         <div class="post-header">
             <div class="avatar">👤</div>
+
             <div class="post-user">
                 <strong>You</strong>
                 <div class="post-time">Just now · 🌍</div>
@@ -771,34 +879,37 @@ function createPost() {
 
         <div class="post-text">${escapeHTML(text.value)}</div>
 
-        ${imageHTML}
+        ${mediaHTML}
 
-        <div class="post-stats">
+        <div class="stats">
             <span class="likes-count">👍 0</span>
             <span>0 comments</span>
         </div>
 
-        <div class="post-actions">
+        <div class="actions">
             <button onclick="likePost(this)">👍 Like</button>
             <button onclick="commentPost(this)">💬 Comment</button>
             <button onclick="sharePost()">↗ Share</button>
         </div>
     `;
 
-    document.getElementById('home').insertBefore(
-        post,
-        document.querySelector('.create-post').nextElementSibling
-    );
+    document.querySelector('.create-post').after(post);
 
     text.value = '';
     photo.value = '';
+    video.value = '';
 
-    showToast('Your post has been added!');
+    document.getElementById('postButton').style.display = 'none';
+
+    showToast('Post published successfully!');
 }
 
-/* PREVENT HTML INJECTION */
+/* SECURITY */
+
 function escapeHTML(text) {
+
     return text.replace(/[&<>"']/g, function(m) {
+
         return {
             '&':'&amp;',
             '<':'&lt;',
@@ -806,20 +917,46 @@ function escapeHTML(text) {
             '"':'&quot;',
             "'":'&#039;'
         }[m];
+
     });
 }
 
 /* SEARCH */
-function searchPosts(query) {
-    const posts = document.querySelectorAll('#home .post');
 
-    posts.forEach(post => {
-        post.style.display = post.innerText.toLowerCase().includes(query.toLowerCase())
+function searchPosts(query) {
+
+    document.querySelectorAll('#home .post').forEach(post => {
+
+        post.style.display =
+            post.innerText.toLowerCase().includes(query.toLowerCase())
             ? 'block' : 'none';
+
     });
 }
+
+/* STORY UPLOAD */
+
+document.getElementById('storyUpload').addEventListener('change', function() {
+
+    if(!this.files.length) return;
+
+    const url = URL.createObjectURL(this.files[0]);
+
+    const story = document.createElement('div');
+
+    story.className = 'story';
+
+    story.innerHTML = `
+        <img src="${url}">
+        <div class="story-name">Your Story</div>
+    `;
+
+    document.querySelector('.stories').appendChild(story);
+
+    showToast('Story added!');
+});
 
 </script>
 
 </body>
-              </html>
+    </html>
