@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zetu</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    color: #1c1e21;
+}
+
+:root {
+    --green: #064e3b;
+    --green2: #087f5b;
+    --lightgreen: #d1fae5;
+    --white: #ffffff;
+}
+
+/* HEADER */
+.header {
+    background: var(--green);
+    color: white;
+    padding: 12px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.header-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-button {
+    background: #ffffff25;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.search {
+    margin-top: 10px;
+    width: 100%;
+    padding: 11px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+/* NAVIGATION */
+.nav {
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-item {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px 12px;
+    color: #65676b;
+}
+
+.nav-item.active {
+    color: var(--green2);
+    border-bottom: 3px solid var(--green2);
+}
+
+/* STORIES */
+.stories {
+    background: white;
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+.story {
+    min-width: 105px;
+    height: 170px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #064e3b, #10b981);
+    color: white;
+    cursor: pointer;
+}
+
+.story img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-name {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 4px black;
+}
+
+.story-add {
+    background: white;
+    color: #222;
+}
+
+.story-add .add-circle {
+    position: absolute;
+    bottom: 45px;
+    left: 35px;
+    width: 35px;
+    height: 35px;
+    background: var(--green2);
+    border-radius: 50%;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CREATE POST */
+.create-post {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.create-top {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--lightgreen);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-input {
+    flex: 1;
+    padding: 12px 15px;
+    background: #f0f2f5;
+    border-radius: 25px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+.create-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+}
+
+.create-action {
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+/* POSTS */
+.post {
+    background: white;
+    margin-bottom: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 10px;
+}
+
+.post-user {
+    flex: 1;
+}
+
+.post-user strong {
+    display: block;
+    font-size: 15px;
+}
+
+.post-time {
+    color: #65676b;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.post-menu {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.post-text {
+    padding: 0 12px 12px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.post-image {
+    width: 100%;
+    display: block;
+    max-height: 450px;
+    object-fit: cover;
+}
+
+.post-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    color: #65676b;
+    font-size: 13px;
+}
+
+.post-actions {
+    display: flex;
+    border-top: 1px solid #eee;
+    margin: 0 10px;
+}
+
+.post-actions button {
+    flex: 1;
+    border: none;
+    background: white;
+    padding: 12px 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #65676b;
+    cursor: pointer;
+}
+
+.post-actions button:hover {
+    background: #f5f5f5;
+}
+
+.post-actions button.liked {
+    color: var(--green2);
+}
+
+.comments {
+    padding: 10px;
+}
+
+.comment-input {
+    width: 100%;
+    border: none;
+    background: #f0f2f5;
+    padding: 12px;
+    border-radius: 25px;
+    outline: none;
+}
+
+/* SPONSORED */
+.sponsored {
+    background: white;
+    margin-bottom: 10px;
+}
+
+.sponsored-label {
+    padding: 10px 12px;
+    color: #777;
+    font-size: 12px;
+}
+
+.ad-banner {
+    background: linear-gradient(135deg, #064e3b, #10b981);
+    padding: 25px 15px;
+    color: white;
+    text-align: center;
+}
+
+.ad-banner h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.ad-banner button {
+    background: white;
+    color: var(--green);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    border-top: 1px solid #ddd;
+    z-index: 100;
+}
+
+.bottom-item {
+    text-align: center;
+    font-size: 11px;
+    color: #65676b;
+    cursor: pointer;
+}
+
+.bottom-item span {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 3px;
+}
+
+.bottom-item.active {
+    color: var(--green2);
+}
+
+.page {
+    padding-bottom: 75px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: none;
+    z-index: 999;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (min-width: 700px) {
+    .page {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .header {
+        padding-left: calc((100% - 600px) / 2);
+        padding-right: calc((100% - 600px) / 2);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-top">
+        <div class="logo">Zetu</div>
+
+        <div class="header-icons">
+            <div class="icon-button" onclick="showToast('Search')">🔍</div>
+            <div class="icon-button" onclick="showToast('Messages')">💬</div>
+            <div class="icon-button" onclick="showToast('Notifications')">🔔</div>
+        </div>
+    </div>
+
+    <input class="search" placeholder="Search Zetu..." oninput="searchPosts(this.value)">
+</div>
+
+<!-- TOP NAV -->
+<div class="nav">
+    <div class="nav-item active" onclick="goPage('home',this)">🏠</div>
+    <div class="nav-item" onclick="goPage('followers',this)">👥</div>
+    <div class="nav-item" onclick="goPage('videos',this)">🎥</div>
+    <div class="nav-item" onclick="goPage('market',this)">🛒</div>
+    <div class="nav-item" onclick="goPage('menu',this)">☰</div>
+</div>
+
+<div class="page" id="home">
+
+<!-- STORIES -->
+<div class="stories">
+
+    <div class="story story-add" onclick="document.getElementById('storyUpload').click()">
+        <div style="height:110px;background:#e5e7eb;"></div>
+        <div class="add-circle">+</div>
+        <div class="story-name" style="color:#222;text-shadow:none;">Create story</div>
+    </div>
+
+    <div class="story">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80">
+        <div class="story-name">Mary Wanjiku</div>
+    </div>
+
+    <div class="story">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80">
+        <div class="story-name">Brian</div>
+    </div>
+
+    <div class="story">
+        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80">
+        <div class="story-name">Amina</div>
+    </div>
+
+    <div class="story">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80">
+        <div class="story-name">Kevin</div>
+    </div>
+
+</div>
+
+<input type="file" id="storyUpload" accept="image/*" hidden>
+
+<!-- CREATE POST -->
+<div class="create-post">
+    <div class="create-top">
+        <div class="avatar">👤</div>
+
+        <input
+            id="postText"
+            class="post-input"
+            placeholder="What's on your mind?"
+        >
+    </div>
+
+    <div class="create-actions">
+        <div class="create-action" onclick="document.getElementById('photoUpload').click()">
+            🖼️ Photo
+        </div>
+
+        <div class="create-action" onclick="document.getElementById('videoUpload').click()">
+            🎥 Video
+        </div>
+
+        <div class="create-action" onclick="showToast('Live video coming soon')">
+            📹 Live
+        </div>
+    </div>
+
+    <button onclick="createPost()" style="
+        width:100%;
+        margin-top:12px;
+        background:#064e3b;
+        color:white;
+        padding:12px;
+        border:none;
+        border-radius:8px;
+        font-weight:bold;
+    ">Post</button>
+</div>
+
+<input type="file" id="photoUpload" accept="image/*" hidden>
+<input type="file" id="videoUpload" accept="video/*" hidden>
+
+<!-- POST 1 -->
+<div class="post">
+
+    <div class="post-header">
+        <div class="avatar">👩</div>
+
+        <div class="post-user">
+            <strong>Mercy Njeri</strong>
+            <div class="post-time">2 hours ago · 🌍</div>
+        </div>
+
+        <div class="post-menu">•••</div>
+    </div>
+
+    <div class="post-text">
+        Good morning everyone! ❤️
+        Wishing you a beautiful and blessed day.
+        Remember to keep believing in yourself! 🌿
+    </div>
+
+    <img class="post-image"
+         src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80">
+
+    <div class="post-stats">
+        <span class="likes-count">👍 124</span>
+        <span>18 comments · 5 shares</span>
+    </div>
+
+    <div class="post-actions">
+        <button onclick="likePost(this)">👍 Like</button>
+        <button onclick="commentPost(this)">💬 Comment</button>
+        <button onclick="sharePost()">↗ Share</button>
+    </div>
+
+</div>
+
+<!-- ADVERTISEMENT -->
+<div class="sponsored">
+    <div class="sponsored-label">Sponsored · Advertisement</div>
+
+    <div class="ad-banner">
+        <h2>Pesa Loan</h2>
+        <p>Fast and convenient financial services.</p>
+        <button onclick="window.open('https://example.com','_blank')">
+            Learn More
+        </button>
+    </div>
+</div>
+
+<!-- POST 2 -->
+<div class="post">
+
+    <div class="post-header">
+        <div class="avatar">👨</div>
+
+        <div class="post-user">
+            <strong>John Kamau</strong>
+            <div class="post-time">5 hours ago · 🌍</div>
+        </div>
+
+        <div class="post-menu">•••</div>
+    </div>
+
+    <div class="post-text">
+        Life is about progress, not perfection.
+        Keep going, your time is coming! 💚
+    </div>
+
+    <div class="post-stats">
+        <span class="likes-count">👍 45</span>
+        <span>6 comments</span>
+    </div>
+
+    <div class="post-actions">
+        <button onclick="likePost(this)">👍 Like</button>
+        <button onclick="commentPost(this)">💬 Comment</button>
+        <button onclick="sharePost()">↗ Share</button>
+    </div>
+
+</div>
+
+</div>
+
+<!-- OTHER PAGES -->
+<div class="page hidden" id="followers">
+    <div class="post" style="padding:20px;">
+        <h2>👥 Followers</h2>
+        <p style="margin-top:15px;">Discover people and grow your followers.</p>
+        <button onclick="showToast('People discovery coming soon')"
+        style="margin-top:15px;background:#064e3b;color:white;padding:12px;border:0;border-radius:8px;">
+        Find People
+        </button>
+    </div>
+</div>
+
+<div class="page hidden" id="videos">
+    <div class="post" style="padding:20px;">
+        <h2>🎥 Videos</h2>
+        <p style="margin-top:15px;">Watch videos shared on Zetu.</p>
+    </div>
+</div>
+
+<div class="page hidden" id="market">
+    <div class="post" style="padding:20px;">
+        <h2>🛒 Marketplace</h2>
+        <p style="margin-top:15px;">Buy and sell products.</p>
+    </div>
+</div>
+
+<div class="page hidden" id="menu">
+    <div class="post" style="padding:20px;">
+        <h2>☰ Menu</h2>
+        <p style="margin-top:15px;">Your Zetu menu</p>
+        <p style="margin-top:15px;">👤 Profile</p>
+        <p style="margin-top:15px;">⚙️ Settings</p>
+        <p style="margin-top:15px;">🔒 Privacy</p>
+    </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+
+    <div class="bottom-item active" onclick="goPage('home',this)">
+        <span>🏠</span>Home
+    </div>
+
+    <div class="bottom-item" onclick="goPage('followers',this)">
+        <span>👥</span>Followers
+    </div>
+
+    <div class="bottom-item" onclick="goPage('videos',this)">
+        <span>🎥</span>Videos
+    </div>
+
+    <div class="bottom-item" onclick="goPage('market',this)">
+        <span>🛒</span>Market
+    </div>
+
+    <div class="bottom-item" onclick="goPage('menu',this)">
+        <span>☰</span>Menu
+    </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* NAVIGATION */
+function goPage(page, element) {
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.add('hidden');
+    });
+
+    document.getElementById(page).classList.remove('hidden');
+
+    document.querySelectorAll('.nav-item, .bottom-item').forEach(n => {
+        n.classList.remove('active');
+    });
+
+    if(element) element.classList.add('active');
+
+    window.scrollTo(0,0);
+}
+
+/* TOAST */
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.innerText = message;
+    toast.style.display = 'block';
+
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 2500);
+}
+
+/* LIKE */
+function likePost(button) {
+    button.classList.toggle('liked');
+
+    const post = button.closest('.post');
+    const count = post.querySelector('.likes-count');
+
+    if(button.classList.contains('liked')) {
+        button.innerHTML = '💚 Liked';
+        count.innerText = '💚 ' + (parseInt(count.innerText.replace(/\D/g,'')) + 1);
+    } else {
+        button.innerHTML = '👍 Like';
+        count.innerText = '👍 ' + (parseInt(count.innerText.replace(/\D/g,'')) - 1);
+    }
+}
+
+/* COMMENT */
+function commentPost(button) {
+    const post = button.closest('.post');
+
+    let box = post.querySelector('.comments');
+
+    if(!box) {
+        box = document.createElement('div');
+        box.className = 'comments';
+
+        box.innerHTML = `
+            <input class="comment-input" placeholder="Write a comment..."
+            onkeydown="if(event.key==='Enter') addComment(this)">
+            <div class="comment-list"></div>
+        `;
+
+        post.appendChild(box);
+    }
+
+    box.querySelector('input').focus();
+}
+
+function addComment(input) {
+    if(input.value.trim() === '') return;
+
+    const comment = document.createElement('p');
+    comment.style.padding = '8px';
+    comment.innerText = '👤 ' + input.value;
+
+    input.parentElement.querySelector('.comment-list').appendChild(comment);
+
+    input.value = '';
+}
+
+/* SHARE */
+function sharePost() {
+    if(navigator.share) {
+        navigator.share({
+            title: 'Zetu',
+            text: 'Check out this post on Zetu!'
+        });
+    } else {
+        showToast('Share feature available on your device');
+    }
+}
+
+/* CREATE POST */
+function createPost() {
+    const text = document.getElementById('postText');
+    const photo = document.getElementById('photoUpload');
+
+    if(text.value.trim() === '' && !photo.files.length) {
+        showToast('Write something or add a photo!');
+        return;
+    }
+
+    const post = document.createElement('div');
+    post.className = 'post';
+
+    let imageHTML = '';
+
+    if(photo.files.length) {
+        const imageURL = URL.createObjectURL(photo.files[0]);
+
+        imageHTML = `<img class="post-image" src="${imageURL}">`;
+    }
+
+    post.innerHTML = `
+        <div class="post-header">
+            <div class="avatar">👤</div>
+            <div class="post-user">
+                <strong>You</strong>
+                <div class="post-time">Just now · 🌍</div>
+            </div>
+        </div>
+
+        <div class="post-text">${escapeHTML(text.value)}</div>
+
+        ${imageHTML}
+
+        <div class="post-stats">
+            <span class="likes-count">👍 0</span>
+            <span>0 comments</span>
+        </div>
+
+        <div class="post-actions">
+            <button onclick="likePost(this)">👍 Like</button>
+            <button onclick="commentPost(this)">💬 Comment</button>
+            <button onclick="sharePost()">↗ Share</button>
+        </div>
+    `;
+
+    document.getElementById('home').insertBefore(
+        post,
+        document.querySelector('.create-post').nextElementSibling
+    );
+
+    text.value = '';
+    photo.value = '';
+
+    showToast('Your post has been added!');
+}
+
+/* PREVENT HTML INJECTION */
+function escapeHTML(text) {
+    return text.replace(/[&<>"']/g, function(m) {
+        return {
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            '"':'&quot;',
+            "'":'&#039;'
+        }[m];
+    });
+}
+
+/* SEARCH */
+function searchPosts(query) {
+    const posts = document.querySelectorAll('#home .post');
+
+    posts.forEach(post => {
+        post.style.display = post.innerText.toLowerCase().includes(query.toLowerCase())
+            ? 'block' : 'none';
+    });
+}
+
+</script>
+
+</body>
+              </html>
