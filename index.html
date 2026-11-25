@@ -7,249 +7,284 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
 body{background:#e9ebee;padding-bottom:70px}
-.top{background:#0a6a00;color:#fff;position:sticky;top:0;z-index:50}
+.hidden{display:none!important}
+/* AUTH BEFORE DASHBOARD */
+#authPage{background:#0a6a00;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;color:#fff}
+#authPage .logo-big{width:90px;height:90px;border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:58px;font-weight:900;margin-bottom:10px}
+#authPage h1{font-size:38px}
+#authPage p{opacity:.85;margin:6px 0 18px;text-align:center}
+.auth-card{background:#fff;color:#111;width:100%;max-width:400px;border-radius:16px;padding:20px}
+.auth-card h2{text-align:center}.auth-card p{color:#666;font-size:13px;text-align:center;margin-bottom:14px}
+.auth-card label{font-weight:bold;font-size:13px}
+.auth-card input{width:100%;padding:13px;border:1px solid #ddd;border-radius:10px;margin:6px 0 12px;font-size:15px}
+.auth-card button{width:100%;background:#0a6a00;color:#fff;border:none;padding:14px;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
+.auth-card .link{text-align:center;margin-top:12px;color:#0a6a00;font-weight:bold;cursor:pointer;font-size:14px}
+.pic-select{display:flex;gap:8px;justify-content:center;margin:6px 0 12px;flex-wrap:wrap}
+.pic-select img{width:56px;height:56px;border-radius:50%;object-fit:cover;cursor:pointer;border:3px solid transparent}
+.pic-select img.selected{border-color:#0a6a00;transform:scale(1.1)}
+/* TOP - EXACTLY LIKE PHOTO */
+.top{background:#166b00;color:#fff;position:sticky;top:0;z-index:50}
 .top1{display:flex;align-items:center;justify-content:space-between;padding:8px 12px}
 .logo{display:flex;align-items:center;gap:8px}
-.logo .c{width:42px;height:42px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900}
-.logo b{font-size:26px}
-.icons{display:flex;gap:16px;font-size:22px;align-items:center;position:relative}
-.badge{background:#ff1744;color:#fff;font-size:11px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-4px;right:-6px}
-.nav{display:flex;justify-content:space-around;padding:6px 0 8px;border-top:1px solid rgba(255,255,255,.2)}
-.nav button{background:none;border:none;color:#fff;font-size:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.8;padding:4px 8px;border-radius:8px}
-.nav button.active{opacity:1;background:rgba(0,0,0,.25);border-bottom:3px solid #fff}
-.nav button span{font-size:22px}
+.logo .c{width:44px;height:44px;border:2.5px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900}
+.logo b{font-size:28px;letter-spacing:.3px}
+.icons{display:flex;gap:18px;font-size:24px;align-items:center}
+.icons .ic{position:relative;cursor:pointer}
+.badge-red{background:#ff1744;color:#fff;font-size:11px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;top:-6px;right:-8px;padding:0 4px;font-weight:bold}
+.nav{display:flex;justify-content:space-around;padding:2px 0 0;border-top:1px solid rgba(255,255,255,.15)}
+.nav button{background:none;border:none;color:#fff;font-size:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 12px 8px;opacity:.9}
+.nav button.active{opacity:1;border-bottom:3px solid #fff}
+.nav button span{font-size:26px}
+/* PROFILE + WHAT'S ON YOUR MIND - ABOVE STORY */
+.composer-top{background:#fff;padding:12px 12px 10px;margin-bottom:8px}
+.composer-top .row1{display:flex;gap:10px;align-items:center}
+.avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.avatar-sm{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.composer-top input{flex:1;background:#f0f2f5;border:none;padding:13px 16px;border-radius:22px;font-size:16px;outline:none;color:#555}
+.composer-top .actions{display:flex;justify-content:space-around;border-top:1px solid #eee;padding-top:10px;margin-top:10px}
+.composer-top .actions button{border:none;background:none;font-weight:600;cursor:pointer;font-size:14px;display:flex;gap:6px;align-items:center;color:#444}
+.composer-top .actions .div{width:1px;background:#ddd}
 /* STORIES - PROFILE ON TOP */
-.stories{display:flex;gap:10px;overflow-x:auto;padding:10px;background:#fff}
-.story{min-width:108px;height:168px;border-radius:14px;position:relative;overflow:hidden;cursor:pointer;flex-shrink:0;background:#ddd}
+.stories{display:flex;gap:8px;overflow-x:auto;padding:2px 10px 10px;background:#e9ebee;scrollbar-width:none}
+.story{min-width:112px;height:178px;border-radius:14px;position:relative;overflow:hidden;cursor:pointer;flex-shrink:0;background:#ddd;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .story img{width:100%;height:100%;object-fit:cover}
-/* PROFILE ON TOP OF STORY */
-.story .profile-top{position:absolute;top:8px;left:8px;width:40px;height:40px;border:3px solid #2e9bff;border-radius:50%;overflow:hidden;background:#fff;z-index:5}
+.story .profile-top{position:absolute;top:8px;left:8px;width:38px;height:38px;border:3px solid #2e9bff;border-radius:50%;overflow:hidden;background:#fff;z-index:5}
 .story .profile-top img{width:100%;height:100%;object-fit:cover}
-.story .name{position:absolute;bottom:8px;left:8px;color:#fff;font-weight:bold;font-size:12px;text-shadow:0 1px 4px #000;z-index:5}
-.story .plus{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);background:#2e9bff;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:3px solid #fff;z-index:5}
-.composer{background:#fff;margin:10px 0;padding:12px;border-radius:8px;display:flex;flex-direction:column;gap:10px}
-.composer .row1{display:flex;gap:10px;align-items:center}
-.avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0}
-.composer input{flex:1;background:#f0f2f5;border:none;padding:12px 14px;border-radius:20px;font-size:15px;outline:none}
-.composer .actions{display:flex;justify-content:space-around;border-top:1px solid #eee;padding-top:10px}
-.composer .actions button{border:none;background:none;font-weight:bold;cursor:pointer;font-size:13px;display:flex;gap:4px;align-items:center}
+.story .name{position:absolute;bottom:8px;left:8px;color:#fff;font-weight:bold;font-size:13px;text-shadow:0 1px 4px #000;z-index:5}
+.story .plus{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:#2e9bff;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:3px solid #fff;z-index:5}
+.story .arrow{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:#fff;color:#000;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;z-index:6}
+/* FEED */
 .feed{display:flex;flex-direction:column;gap:10px;padding:0 0 10px}
-.post{background:#fff;padding:12px}
+.post{background:#fff;padding:12px 12px 8px}
 .post-head{display:flex;gap:10px;align-items:center}
-.post-head b{font-size:15px}.post-head small{color:#888}
-.post-head .dots{margin-left:auto;font-size:20px;cursor:pointer}
-.post p{margin:10px 0;font-size:15px;line-height:1.4}
-.post img{width:100%;display:block;max-height:420px;object-fit:cover}
-.post .counts{display:flex;justify-content:space-between;color:#666;font-size:13px;padding:8px 0;border-bottom:1px solid #eee}
+.post-head b{font-size:16px}.post-head small{color:#777}
+.post-head .dots{margin-left:auto;font-size:22px;cursor:pointer;color:#555;letter-spacing:2px}
+.post p{margin:10px 0;font-size:16px;line-height:1.4}
+.post img{width:100%;display:block;max-height:460px;object-fit:cover}
+.post .counts{display:flex;justify-content:space-between;color:#555;font-size:14px;padding:8px 0;border-bottom:1px solid #eee}
+.post .counts .likes{display:flex;align-items:center;gap:4px}
+.post .counts .likes .ic{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
 .post .btns{display:flex;justify-content:space-around;padding-top:8px}
-.post .btns button{border:none;background:none;font-weight:bold;cursor:pointer;font-size:14px;color:#555}
+.post .btns button{border:none;background:none;font-weight:600;cursor:pointer;font-size:15px;color:#555;display:flex;gap:6px;align-items:center}
 .post .btns button.liked{color:#0a6a00}
 .comments{margin-top:8px;display:none}
 .comments input{width:100%;padding:10px;border-radius:20px;border:1px solid #ddd;background:#f0f2f5}
 .comment{display:flex;gap:8px;margin:6px 0;background:#f0f2f5;padding:8px 10px;border-radius:12px;font-size:13px}
-.page{display:none;padding:10px}
+.page{display:none}
 .page.active{display:block}
-.card{background:#fff;border-radius:12px;padding:12px;margin-bottom:10px}
-.card h3{margin-bottom:8px}
+.card{background:#fff;border-radius:12px;padding:12px;margin:10px}
 .follow-row{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
 .follow-row button{margin-left:auto;background:#0a6a00;color:#fff;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
 .follow-row button.following{background:#ddd;color:#333}
 .chat-row{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #eee;cursor:pointer}
 .chat-row .dot{width:10px;height:10px;background:#00e676;border-radius:50%;margin-left:auto}
-.video-card{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:12px}
+.video-card{background:#fff;border-radius:12px;overflow:hidden;margin:10px}
 .video-card img{width:100%;height:220px;object-fit:cover}
 .video-card .vinfo{padding:10px;display:flex;gap:10px;align-items:center}
-.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
 .m-item{background:#fff;border-radius:12px;overflow:hidden}
 .m-item img{width:100%;height:130px;object-fit:cover}
 .m-item div{padding:8px}.m-item b{color:#0a6a00}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #ddd;z-index:60}
-.bottom button{border:none;background:none;font-size:22px;cursor:pointer;opacity:.6}
-.bottom button.active{opacity:1;color:#0a6a00}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:8px 0 6px;border-top:1px solid #ddd;z-index:60}
+.bottom button{border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;font-size:12px;font-weight:bold;color:#666;gap:2px}
+.bottom button.active{color:#166b00}
+.bottom button .bpic{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid #166b00}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center;z-index:100}
 .modal.show{display:flex}
 .modal .box{background:#fff;width:100%;max-width:500px;border-radius:16px 16px 0 0;padding:16px;max-height:85vh;overflow:auto}
 .modal textarea{width:100%;height:90px;border:1px solid #ddd;border-radius:10px;padding:10px;font-size:15px}
 .modal button{width:100%;background:#0a6a00;color:#fff;border:none;padding:13px;border-radius:10px;font-weight:bold;margin-top:10px;cursor:pointer}
+.profile-header{background:#fff;padding:16px;text-align:center;margin:10px;border-radius:12px}
+.profile-header img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:4px solid #166b00}
 </style>
 </head>
 <body>
 
+<!-- ACCOUNTS BEFORE DASHBOARD -->
+<div id="authPage">
+<div class="logo-big">C</div>
+<h1>Connecta</h1>
+<p>Connect with friends, share stories, videos & marketplace 🇰🇪</p>
+<div class="auth-card" id="loginCard">
+<h2>Welcome Back 👋</h2><p>Login to continue</p>
+<label>Phone or Email</label><input id="loginEmail" placeholder="0712345678 or you@gmail.com">
+<label>Password</label><input id="loginPass" type="password" placeholder="Password">
+<button onclick="doLogin()">🔓 LOG IN</button>
+<div class="link" onclick="showSignup()">Don't have account? Create Account →</div>
+<div class="link" style="color:#888" onclick="demoLogin()">👉 Try Demo Account</div>
+</div>
+<div class="auth-card hidden" id="signupCard">
+<h2>Create Account ✨</h2><p>Join Connecta in 30 seconds</p>
+<label>Full Name</label><input id="signName" placeholder="e.g. Jane Wanjiku">
+<label>Phone or Email</label><input id="signEmail" placeholder="0712345678">
+<label>Password</label><input id="signPass" type="password" placeholder="4+ chars">
+<label>Choose Profile Photo</label>
+<div class="pic-select" id="picSelect">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" onclick="selectPic(this)" class="selected">
+<img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200" onclick="selectPic(this)">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" onclick="selectPic(this)">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200" onclick="selectPic(this)">
+<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200" onclick="selectPic(this)">
+</div>
+<button onclick="doSignup()">✅ CREATE ACCOUNT</button>
+<div class="link" onclick="showLogin()">Already have account? Login →</div>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
 <div class="top">
 <div class="top1">
 <div class="logo"><div class="c">C</div><b>Connecta</b></div>
-<div class="icons"><span onclick="alert('Search friends')">🔍</span><span style="position:relative" onclick="showPage('notif')">🔔<span class="badge">5</span></span></div>
+<div class="icons">
+<span class="ic">🔍</span>
+<span class="ic">💬<span class="badge-red">3</span></span>
+<span class="ic" onclick="showPage('notif')">🔔<span class="badge-red">5</span></span>
+</div>
 </div>
 <div class="nav">
 <button class="active" onclick="showPage('home',this)"><span>🏠</span>Home</button>
-<button onclick="showPage('followers',this)"><span>👥</span>Followers</button>
-<button onclick="showPage('chat',this)"><span>💬</span>Private Chat</button>
-<button onclick="showPage('videos',this)"><span>🎬</span>Videos</button>
+<button onclick="showPage('followers',this)"><span>👥</span>Friends</button>
+<button onclick="showPage('videos',this)"><span>▶️</span>Videos</button>
 <button onclick="showPage('market',this)"><span>🏪</span>Marketplace</button>
+<button onclick="showPage('profile',this)"><span>☰</span>More</button>
 </div>
 </div>
 
-<!-- HOME -->
+<!-- HOME - EXACT ORDER LIKE PHOTO -->
 <div id="home" class="page active">
-<!-- STORIES - PROFILE ON TOP -->
-<div class="stories">
-<!-- YOUR PROFILE ON TOP OF STORY -->
-<div class="story" onclick="openStory('You')">
-<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300">
-<div class="profile-top"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"></div>
-<div class="plus">+</div>
-<div class="name">Create Story</div>
-</div>
-<div class="story" onclick="openStory('Jane Wanjiku')">
-<img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300">
-<div class="profile-top"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"></div>
-<div class="name">Jane Wanjiku</div>
-</div>
-<div class="story" onclick="openStory('Travel Kenya')">
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300">
-<div class="profile-top"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100"></div>
-<div class="name">Travel Kenya</div>
-</div>
-<div class="story" onclick="openStory('Faith Achieng')">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300">
-<div class="profile-top"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"></div>
-<div class="name">Faith Achieng</div>
-</div>
-<div class="story" onclick="openStory('Kevin Kiprop')">
-<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300">
-<div class="profile-top"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"></div>
-<div class="name">Kevin Kiprop</div>
-</div>
-</div>
 
-<!-- COMPOSER - VIDEO BETWEEN PHOTO AND FEELING -->
-<div class="composer">
-<div class="row1"><img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><input placeholder="What's on your mind?" onclick="openPostModal()"></div>
+<!-- 1. PROFILE + WHAT'S ON YOUR MIND - ABOVE STORY -->
+<div class="composer-top">
+<div class="row1">
+<img class="avatar" id="composerPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100">
+<input id="postInput" placeholder="What's on your mind?" onclick="openPostModal()">
+</div>
 <div class="actions">
-<button onclick="openPostModal()">🎥 <span style="color:#f02849">Live</span></button>
-<button onclick="openPostModal()">🖼️ <span style="color:#45bd62">Photo</span></button>
-<button onclick="openVideoModal()">📹 <span style="color:#7b61ff">Video</span></button>
+<button onclick="openPostModal()">🎥 <span style="color:#f02849">Live</span></button><div class="div"></div>
+<button onclick="openPostModal()">🖼️ <span style="color:#45bd62">Photo</span></button><div class="div"></div>
+<button onclick="openVideoModal()">📹 <span style="color:#7b61ff">Video</span></button><div class="div"></div>
 <button onclick="openPostModal()">😊 <span style="color:#f7b928">Feeling</span></button>
 </div>
 </div>
 
+<!-- 2. STORIES - PROFILE ON TOP -->
+<div class="stories">
+<div class="story" onclick="openStory('You')">
+<img id="myStoryBg" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300">
+<div class="profile-top"><img id="myStoryPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"></div>
+<div class="plus">+</div>
+<div class="name" id="myStoryName">Create<br>Story</div>
+</div>
+<div class="story" onclick="openStory('Jane Wanjiku')"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300"><div class="profile-top"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"></div><div class="name">Jane Wanjiku</div></div>
+<div class="story" onclick="openStory('Travel Kenya')"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300"><div class="profile-top"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100"></div><div class="name">Travel Kenya</div></div>
+<div class="story" onclick="openStory('Faith Achieng')"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300"><div class="profile-top"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"></div><div class="name">Faith Achieng</div></div>
+<div class="story" onclick="openStory('Tasha')"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300"><div class="profile-top"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"></div><div class="name">Tasha</div><div class="arrow">›</div></div>
+</div>
+
+<!-- 3. FEED - LIKE PHOTO -->
 <div class="feed" id="feed">
 <div class="post">
-<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"><div><b>Mercy Njeri</b><br><small>2h • 🌍</small></div><span class="dots">...</span></div>
+<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"><div><b>Mercy Njeri</b><br><small>2h • 🌍</small></div><span class="dots">•••</span></div>
 <p>Good morning everyone! ☀️<br>Have a wonderful day ahead. Keep smiling 😊</p>
 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800">
-<div class="counts"><span>❤️ 124 Likes</span><span>18 Comments • 5 Shares</span></div>
+<div class="counts"><span class="likes"><span class="ic" style="background:#1877f2">👍</span><span class="ic" style="background:#f02849">❤️</span> 243</span><span>45 comments &nbsp; 12 shares</span></div>
 <div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div>
-<div class="comments"><div class="comment"><b>Jane:</b> Beautiful! Have a blessed day too ❤️</div><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>
+<div class="comments"><div class="comment"><b>Jane:</b> Beautiful! ❤️</div><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>
 </div>
+
 <div class="post">
-<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"><div><b>Kevin Kiprop</b><br><small>5h • 🌍</small></div><span class="dots">...</span></div>
-<p>New video dropping soon! 🎬 Who wants to see it?</p>
-<img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800">
-<div class="counts"><span>❤️ 89 Likes</span><span>32 Comments</span></div>
-<div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div>
-<div class="comments"><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>
-</div>
-<div class="post">
-<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100"><div><b>Travel Kenya</b><br><small>1d • 🌍</small></div><span class="dots">...</span></div>
-<p>Diani Beach is calling! 🌊 Who is coming this weekend? #TravelKenya</p>
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800">
-<div class="counts"><span>❤️ 342 Likes</span><span>56 Comments</span></div>
+<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1540902394724-bb0f8f5a1b0e?w=100" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'"><div><b>Pesa Loan</b><br><small>Sponsored • 🌍</small></div><span class="dots">•••</span></div>
+<p>Get a loan today from KSh 1,000 to KSh 500,000.<br>Fast, secure and easy!</p>
+<div style="background:#e8f5e9;padding:12px;text-align:center;border-radius:8px;margin:8px 0"><b style="color:#0a6a00;font-size:18px">💰 APPLY NOW - 5 Minutes</b><br><button onclick="alert('Pesa Loan: Apply on WhatsApp!')" style="background:#25D366;color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:bold;margin-top:8px">Apply on WhatsApp →</button></div>
+<div class="counts"><span class="likes"><span class="ic" style="background:#1877f2">👍</span> 128</span><span>20 comments</span></div>
 <div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div>
 <div class="comments"><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>
 </div>
 </div>
 </div>
 
-<!-- FOLLOWERS -->
-<div id="followers" class="page">
-<div class="card"><h3>👥 Followers - People You May Know</h3><div id="followList"></div></div>
-</div>
+<div id="followers" class="page"><div class="card"><h3>👥 Friends</h3><div id="followList"></div></div></div>
+<div id="chat" class="page"><div class="card"><h3>💬 Private Chat</h3><div class="chat-row" onclick="openChat('Jane Wanjiku')"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"><div><b>Jane Wanjiku</b><br><small>Hey, how are you?</small></div><span class="dot"></span></div></div></div>
+<div id="videos" class="page"><div class="video-card"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800"><div class="vinfo"><img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"><div><b>Kevin - New Video 🎬</b><br><small>12K views</small></div></div></div><div class="video-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"><div class="vinfo"><img class="avatar" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100"><div><b>Diani Vlog 🌊</b><br><small>25K views</small></div></div></div></div>
+<div id="market" class="page"><div class="market-grid"><div class="m-item"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"><div><b>KSh 15,000</b><br><small>iPhone 11 - Nairobi</small></div></div><div class="m-item"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"><div><b>KSh 3,500</b><br><small>Nike Shoes - Eldoret</small></div></div></div></div>
+<div id="profile" class="page"><div class="profile-header"><img id="profilePicBig" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200"><h2 id="profileName">You</h2><p id="profileEmail" style="color:#666;font-size:13px"></p><p style="margin-top:8px"><b>120</b> Followers • <b>85</b> Following</p><button onclick="showPage('chat',null)" style="background:#0a6a00;color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:bold;margin:6px">💬 Private Chat</button><button onclick="doLogout()" style="background:#ff1744;color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:bold;margin:6px">🚪 LOG OUT</button></div></div>
+<div id="notif" class="page"><div class="card"><h3>🔔 Notifications (5)</h3><p>❤️ Jane liked your post<br><br>💬 Mercy commented<br><br>👥 Kevin followed you</p></div></div>
 
-<!-- CHAT -->
-<div id="chat" class="page">
-<div class="card"><h3>💬 Private Chat</h3>
-<div class="chat-row" onclick="openChat('Jane Wanjiku')"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"><div><b>Jane Wanjiku</b><br><small>Hey, how are you?</small></div><span class="dot"></span></div>
-<div class="chat-row" onclick="openChat('Mercy Njeri')"><img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"><div><b>Mercy Njeri</b><br><small>Good morning 😊</small></div><span class="dot"></span></div>
-<div class="chat-row" onclick="openChat('Kevin Kiprop')"><img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"><div><b>Kevin Kiprop</b><br><small>Seen your story</small></div></div>
-</div>
-</div>
-
-<!-- VIDEOS -->
-<div id="videos" class="page">
-<div class="video-card"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800"><div class="vinfo"><img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"><div><b>Kevin - New Video 🎬</b><br><small>12K views • 2h ago</small></div></div></div>
-<div class="video-card"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800"><div class="vinfo"><img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100"><div><b>Jane Sings 🎤</b><br><small>8K views • 5h ago</small></div></div></div>
-<div class="video-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"><div class="vinfo"><img class="avatar" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100"><div><b>Diani Vlog 🌊</b><br><small>25K views • 1d ago</small></div></div></div>
-</div>
-
-<!-- MARKETPLACE -->
-<div id="market" class="page">
-<h3 style="margin-bottom:10px">🏪 Marketplace</h3>
-<div class="market-grid">
-<div class="m-item"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"><div><b>KSh 15,000</b><br><small>iPhone 11 - Nairobi</small></div></div>
-<div class="m-item"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"><div><b>KSh 3,500</b><br><small>Nike Shoes - Eldoret</small></div></div>
-<div class="m-item"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"><div><b>KSh 2,000</b><br><small>Watch - Kisumu</small></div></div>
-<div class="m-item"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"><div><b>KSh 4,500</b><br><small>Headphones - Mombasa</small></div></div>
-</div>
-<button style="width:100%;background:#0a6a00;color:#fff;border:none;padding:14px;border-radius:10px;font-weight:bold;margin-top:12px" onclick="alert('Sell: Take photo and post it!')">+ SELL YOUR ITEM</button>
-</div>
-
-<!-- NOTIF -->
-<div id="notif" class="page">
-<div class="card"><h3>🔔 Notifications (5)</h3><p>❤️ Jane liked your post<br><br>💬 Mercy commented: Beautiful!<br><br>👥 Kevin started following you<br><br>📹 New video from Jane<br><br>🏪 New item near you</p></div>
-</div>
-
+<!-- BOTTOM - EXACTLY LIKE PHOTO -->
 <div class="bottom">
-<button class="active" onclick="showPage('home',null)">🏠</button>
-<button onclick="showPage('followers',null)">👥</button>
-<button onclick="showPage('chat',null)">💬</button>
-<button onclick="showPage('videos',null)">🎬</button>
-<button onclick="showPage('market',null)">🏪</button>
+<button class="active" onclick="showPage('home',null)">🏠<span>Home</span></button>
+<button onclick="showPage('followers',null)">👥<span>Friends</span></button>
+<button onclick="showPage('videos',null)">▶️<span>Videos</span></button>
+<button onclick="showPage('market',null)">🏪<span>Marketplace</span></button>
+<button onclick="showPage('profile',null)"><img class="bpic" id="bottomPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><span>Profile</span></button>
+</div>
 </div>
 
-<!-- POST MODAL -->
-<div class="modal" id="postModal"><div class="box"><h3>Create Post</h3><div style="display:flex;gap:10px;align-items:center;margin:10px 0"><img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><b>You</b></div><textarea id="postText" placeholder="What's on your mind?"></textarea><button onclick="publishPost()">📣 POST</button><button style="background:#ddd;color:#333" onclick="closePostModal()">Cancel</button></div></div>
-
-<!-- VIDEO MODAL -->
-<div class="modal" id="videoModal"><div class="box"><h3>📹 Upload Video</h3><p style="font-size:13px;color:#666;margin:10px 0">Choose a video from your phone to post to Connecta</p><input type="file" accept="video/*" style="width:100%;padding:12px;border:1px dashed #aaa;border-radius:10px"><textarea id="videoText" placeholder="Say something about your video..." style="width:100%;height:70px;border:1px solid #ddd;border-radius:10px;padding:10px;margin-top:10px"></textarea><button onclick="publishVideo()">📹 POST VIDEO</button><button style="background:#ddd;color:#333" onclick="document.getElementById('videoModal').classList.remove('show')">Cancel</button></div></div>
-
-<!-- CHAT MODAL -->
+<div class="modal" id="postModal"><div class="box"><h3>Create Post</h3><div style="display:flex;gap:10px;align-items:center;margin:10px 0"><img class="avatar" id="modalPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><b id="modalName">You</b></div><textarea id="postText" placeholder="What's on your mind?"></textarea><button onclick="publishPost()">📣 POST</button><button style="background:#ddd;color:#333" onclick="closePostModal()">Cancel</button></div></div>
+<div class="modal" id="videoModal"><div class="box"><h3>📹 Upload Video</h3><input type="file" accept="video/*" style="width:100%;padding:12px;border:1px dashed #aaa;border-radius:10px;margin-top:10px"><textarea id="videoText" placeholder="Say something about your video..." style="width:100%;height:70px;border:1px solid #ddd;border-radius:10px;padding:10px;margin-top:10px"></textarea><button onclick="publishVideo()">📹 POST VIDEO</button><button style="background:#ddd;color:#333" onclick="document.getElementById('videoModal').classList.remove('show')">Cancel</button></div></div>
 <div class="modal" id="chatModal"><div class="box"><h3 id="chatName">Chat</h3><div id="chatMsgs" style="background:#f0f2f5;padding:10px;border-radius:10px;min-height:120px;margin:10px 0"></div><input id="chatInput" placeholder="Type message..." style="width:100%;padding:12px;border-radius:20px;border:1px solid #ddd"><button onclick="sendChat()">Send 💬</button><button style="background:#ddd;color:#333" onclick="document.getElementById('chatModal').classList.remove('show')">Close</button></div></div>
 
 <script>
-let people=[
- {name:'Jane Wanjiku',img:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100',mutual:'12 mutual'},
- {name:'Mercy Njeri',img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',mutual:'8 mutual'},
- {name:'Kevin Kiprop',img:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',mutual:'20 mutual'},
- {name:'Faith Achieng',img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',mutual:'5 mutual'},
-];
-let fl=document.getElementById('followList');
-people.forEach(p=>{let d=document.createElement('div');d.className='follow-row';d.innerHTML=`<img class="avatar" src="${p.img}"><div><b>${p.name}</b><br><small>${p.mutual}</small></div><button onclick="followBtn(this)">+ Follow</button>`;fl.appendChild(d);});
+let currentUser=null;
+let selectedPic='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200';
+function selectPic(el){document.querySelectorAll('.pic-select img').forEach(i=>i.classList.remove('selected'));el.classList.add('selected');selectedPic=el.src;}
+function showSignup(){document.getElementById('loginCard').classList.add('hidden');document.getElementById('signupCard').classList.remove('hidden');}
+function showLogin(){document.getElementById('signupCard').classList.add('hidden');document.getElementById('loginCard').classList.remove('hidden');}
+function doSignup(){
+ let name=document.getElementById('signName').value.trim();
+ let email=document.getElementById('signEmail').value.trim();
+ let pass=document.getElementById('signPass').value.trim();
+ if(!name||!email||!pass){alert('Fill all fields!');return;}
+ let users=JSON.parse(localStorage.getItem('connecta_users')||'[]');
+ if(users.find(u=>u.email===email)){alert('Account exists! Login.');showLogin();return;}
+ let user={name,email,pass,pic:selectedPic};users.push(user);localStorage.setItem('connecta_users',JSON.stringify(users));localStorage.setItem('connecta_current',JSON.stringify(user));openDashboard(user);alert('✅ Welcome '+name+'!');
+}
+function doLogin(){
+ let email=document.getElementById('loginEmail').value.trim();let pass=document.getElementById('loginPass').value.trim();
+ if(!email||!pass){alert('Enter email & password');return;}
+ let users=JSON.parse(localStorage.getItem('connecta_users')||'[]');
+ let user=users.find(u=>u.email===email && u.pass===pass);
+ if(!user){alert('❌ Wrong password. Create Account first.');return;}
+ localStorage.setItem('connecta_current',JSON.stringify(user));openDashboard(user);
+}
+function demoLogin(){let user={name:'Demo User',email:'demo@connecta.co.ke',pic:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'};localStorage.setItem('connecta_current',JSON.stringify(user));openDashboard(user);}
+function openDashboard(user){
+ currentUser=user;
+ document.getElementById('authPage').style.display='none';
+ document.getElementById('dashboard').classList.remove('hidden');
+ document.getElementById('myStoryPic').src=user.pic;
+ document.getElementById('myStoryBg').src=user.pic;
+ document.getElementById('myStoryName').innerHTML=user.name.split(' ')[0]+'<br>Story';
+ document.getElementById('composerPic').src=user.pic;
+ document.getElementById('modalPic').src=user.pic;
+ document.getElementById('modalName').innerText=user.name;
+ document.getElementById('profilePicBig').src=user.pic;
+ document.getElementById('profileName').innerText=user.name;
+ document.getElementById('profileEmail').innerText=user.email;
+ document.getElementById('bottomPic').src=user.pic;
+ document.getElementById('postInput').placeholder="What's on your mind, "+user.name.split(' ')[0]+"?";
+ showPage('home',null);
+}
+function doLogout(){localStorage.removeItem('connecta_current');document.getElementById('dashboard').classList.add('hidden');document.getElementById('authPage').style.display='flex';showLogin();}
+(function(){let saved=localStorage.getItem('connecta_current');if(saved){openDashboard(JSON.parse(saved));}else{document.body.style.paddingBottom='0';}})();
+let people=[{name:'Jane Wanjiku',img:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100',mutual:'12 mutual'},{name:'Mercy Njeri',img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100',mutual:'8 mutual'},{name:'Kevin Kiprop',img:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',mutual:'20 mutual'}];
+let fl=document.getElementById('followList');people.forEach(p=>{let d=document.createElement('div');d.className='follow-row';d.innerHTML=`<img class="avatar" src="${p.img}"><div><b>${p.name}</b><br><small>${p.mutual}</small></div><button onclick="followBtn(this)">+ Follow</button>`;fl.appendChild(d);});
 function followBtn(b){if(b.classList.contains('following')){b.innerText='+ Follow';b.classList.remove('following');}else{b.innerText='✓ Following';b.classList.add('following');}}
 function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);}
 function openPostModal(){document.getElementById('postModal').classList.add('show');}
 function closePostModal(){document.getElementById('postModal').classList.remove('show');}
 function openVideoModal(){document.getElementById('videoModal').classList.add('show');}
-function publishPost(){
- let txt=document.getElementById('postText').value.trim();if(!txt){alert('Write something first!');return;}
- let feed=document.getElementById('feed');let div=document.createElement('div');div.className='post';
- div.innerHTML=`<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><div><b>You</b><br><small>Just now • 🌍</small></div></div><p>${txt}</p><div class="counts"><span>❤️ 0 Likes</span></div><div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div><div class="comments"><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>`;
- feed.prepend(div);document.getElementById('postText').value='';closePostModal();showPage('home',null);alert('✅ Posted!');
-}
-function publishVideo(){
- let txt=document.getElementById('videoText').value||'My new video 📹';
- let feed=document.getElementById('feed');let div=document.createElement('div');div.className='post';
- div.innerHTML=`<div class="post-head"><img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><div><b>You</b><br><small>Just now • 📹 Video</small></div></div><p>${txt}</p><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800"><div class="counts"><span>❤️ 0 Likes</span></div><div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div><div class="comments"><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>`;
- feed.prepend(div);document.getElementById('videoModal').classList.remove('show');showPage('home',null);alert('✅ Video Posted!');
-}
+function publishPost(){let txt=document.getElementById('postText').value.trim();if(!txt){alert('Write something!');return;}let feed=document.getElementById('feed');let div=document.createElement('div');div.className='post';div.innerHTML=`<div class="post-head"><img class="avatar" src="${currentUser.pic}"><div><b>${currentUser.name}</b><br><small>Just now • 🌍</small></div></div><p>${txt}</p><div class="counts"><span>❤️ 0 Likes</span></div><div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div><div class="comments"><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>`;feed.prepend(div);document.getElementById('postText').value='';closePostModal();showPage('home',null);alert('✅ Posted!');}
+function publishVideo(){let txt=document.getElementById('videoText').value||'My new video 📹';let feed=document.getElementById('feed');let div=document.createElement('div');div.className='post';div.innerHTML=`<div class="post-head"><img class="avatar" src="${currentUser.pic}"><div><b>${currentUser.name}</b><br><small>Just now • 📹 Video</small></div></div><p>${txt}</p><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800"><div class="counts"><span>❤️ 0 Likes</span></div><div class="btns"><button onclick="like(this)">👍 Like</button><button onclick="toggleComments(this)">💬 Comment</button><button onclick="sharePost()">↗️ Share</button></div><div class="comments"><input placeholder="Write a comment..." onkeydown="if(event.key==='Enter'){addComment(this)}"></div>`;feed.prepend(div);document.getElementById('videoModal').classList.remove('show');showPage('home',null);alert('✅ Video Posted!');}
 function like(b){b.classList.toggle('liked');b.innerText=b.classList.contains('liked')?'❤️ Liked':'👍 Like';}
 function toggleComments(b){let c=b.closest('.post').querySelector('.comments');c.style.display=c.style.display==='block'?'none':'block';}
-function addComment(inp){let div=document.createElement('div');div.className='comment';div.innerHTML='<b>You:</b> '+inp.value;inp.parentElement.prepend(div);inp.value='';}
+function addComment(inp){let div=document.createElement('div');div.className='comment';div.innerHTML='<b>'+currentUser.name+':</b> '+inp.value;inp.parentElement.prepend(div);inp.value='';}
 function sharePost(){alert('🔗 Link copied!');}
-function openStory(name){alert('📖 Story by '+name+'\nDouble tap to like ❤️');}
+function openStory(name){alert('📖 Story by '+name);}
 let currentChat='';
-function openChat(name){currentChat=name;document.getElementById('chatName').innerText='💬 '+name;document.getElementById('chatMsgs').innerHTML=`<div><b>${name}:</b> Hi! How are you? 😊</div><br><div><b>${name}:</b> Did you see my story?</div>`;document.getElementById('chatModal').classList.add('show');}
-function sendChat(){let v=document.getElementById('chatInput').value;if(!v)return;document.getElementById('chatMsgs').innerHTML+=`<br><div style="text-align:right"><b>You:</b> ${v}</div>`;document.getElementById('chatInput').value='';setTimeout(()=>{document.getElementById('chatMsgs').innerHTML+=`<br><div><b>${currentChat}:</b> Nice! Talk later ❤️</div>`;},800);}
+function openChat(name){currentChat=name;document.getElementById('chatName').innerText='💬 '+name;document.getElementById('chatMsgs').innerHTML=`<div><b>${name}:</b> Hi! How are you? 😊</div>`;document.getElementById('chatModal').classList.add('show');}
+function sendChat(){let v=document.getElementById('chatInput').value;if(!v)return;document.getElementById('chatMsgs').innerHTML+=`<br><div style="text-align:right"><b>You:</b> ${v}</div>`;document.getElementById('chatInput').value='';}
 </script>
 </body>
-  </html>
+</html>
