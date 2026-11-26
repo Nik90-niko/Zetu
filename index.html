@@ -10,118 +10,117 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Roboto,Arial,sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:#eef0f5;
+    background:#f0f2f5;
     color:#1c1e21;
+    padding-bottom:65px;
 }
 
 :root{
     --green:#075d12;
-    --darkgreen:#03490c;
-}
-
-.hidden{
-    display:none!important;
+    --green-dark:#03490c;
+    --blue:#1877f2;
 }
 
 /* HEADER */
 
-header{
+.header{
     background:var(--green);
     color:white;
-    padding:8px 14px;
     position:sticky;
     top:0;
     z-index:100;
 }
 
-.brandrow{
+.header-top{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    height:52px;
+    padding:10px 14px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
-    font-size:27px;
+    gap:9px;
+    font-size:28px;
     font-weight:bold;
 }
 
 .logo-circle{
-    width:45px;
-    height:45px;
+    width:48px;
+    height:48px;
     border:3px solid white;
     border-radius:50%;
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:30px;
-}
-
-.head-actions{
-    display:flex;
-    gap:17px;
     align-items:center;
+    font-size:31px;
 }
 
-.head-actions button{
+.header-icons{
+    display:flex;
+    align-items:center;
+    gap:17px;
+}
+
+.header-icons button{
     color:white;
     background:none;
     border:none;
-    font-size:26px;
+    font-size:25px;
     cursor:pointer;
     position:relative;
 }
 
 .badge{
     position:absolute;
-    top:-5px;
-    right:-8px;
+    top:-6px;
+    right:-7px;
     background:#ff1744;
     color:white;
+    font-size:12px;
     border-radius:50%;
-    font-size:11px;
-    padding:3px 5px;
-}
-
-/* TOP NAVIGATION */
-
-.topnav{
+    min-width:19px;
+    height:19px;
     display:flex;
-    background:var(--green);
-    position:sticky;
-    top:68px;
-    z-index:90;
+    justify-content:center;
+    align-items:center;
 }
 
-.topnav button{
+/* TOP MENU */
+
+.top-menu{
+    display:flex;
+    justify-content:space-around;
+    background:var(--green);
+}
+
+.top-menu button{
     flex:1;
-    border:none;
+    border:0;
     background:none;
     color:white;
-    padding:10px 2px;
-    cursor:pointer;
-    font-weight:bold;
+    padding:8px 2px 7px;
     font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.topnav button .icon{
+.top-menu button .icon{
     display:block;
-    font-size:23px;
+    font-size:24px;
     margin-bottom:3px;
 }
 
-.topnav button.active{
+.top-menu button.active{
     border-bottom:3px solid white;
 }
 
-/* MAIN */
+/* PAGE */
 
 main{
     max-width:700px;
@@ -130,96 +129,23 @@ main{
 
 .page{
     display:none;
-    padding:1px 9px;
 }
 
 .page.active{
     display:block;
 }
 
-.card{
-    background:white;
-    margin:9px 0;
-    border-radius:12px;
-    box-shadow:0 1px 3px #0001;
-    padding:12px;
-}
-
-/* COMPOSER ABOVE STORIES */
-
-.composer{
-    margin-top:10px;
-}
-
-.compose-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.avatar{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:#d9e8d4;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-    flex-shrink:0;
-    overflow:hidden;
-}
-
-.avatar img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.compose-input{
-    flex:1;
-    border:none;
-    border-radius:30px;
-    background:#eef0f5;
-    padding:14px 16px;
-    font-size:16px;
-    color:#606770;
-    text-align:left;
-    cursor:pointer;
-}
-
-.divider{
-    height:1px;
-    background:#e5e5e5;
-    margin:12px 0;
-}
-
-.compose-actions{
-    display:flex;
-    justify-content:space-around;
-}
-
-.compose-actions button{
-    flex:1;
-    background:white;
-    border:none;
-    padding:7px;
-    cursor:pointer;
-    color:#454d5c;
-    font-weight:bold;
-    font-size:14px;
-}
-
-.compose-actions span{
-    font-size:19px;
-    margin-right:5px;
-}
-
 /* STORIES */
+
+.stories-container{
+    background:white;
+    padding:12px 10px;
+    margin-bottom:8px;
+}
 
 .stories{
     display:flex;
-    gap:9px;
+    gap:10px;
     overflow-x:auto;
     scrollbar-width:none;
 }
@@ -229,114 +155,252 @@ main{
 }
 
 .story{
-    min-width:112px;
-    width:112px;
-    height:170px;
-    border-radius:12px;
+    width:115px;
+    min-width:115px;
+    height:190px;
+    border-radius:15px;
     overflow:hidden;
     position:relative;
-    background:linear-gradient(150deg,#78a967,#245020);
+    background:#ddd;
     color:white;
-    flex-shrink:0;
 }
 
-.story:first-child{
-    background:#e9ecef;
-    color:#222;
-}
-
-.story-photo{
+.story img{
+    width:100%;
     height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:45px;
+    object-fit:cover;
 }
 
-.story-label{
+.story-overlay{
     position:absolute;
     bottom:0;
     left:0;
     right:0;
-    padding:10px 6px;
-    background:linear-gradient(transparent,#0009);
+    padding:12px 6px;
+    background:linear-gradient(transparent,#0008);
     font-size:13px;
     font-weight:bold;
 }
 
-.story-avatar{
+.story-profile{
     position:absolute;
     top:8px;
     left:8px;
-    width:35px;
-    height:35px;
-    background:white;
-    border:3px solid #1877f2;
+    width:37px;
+    height:37px;
     border-radius:50%;
+    border:3px solid #1877f2;
+    overflow:hidden;
+}
+
+.story-profile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.create-story{
+    background:#e7e9ee;
+    color:#222;
+}
+
+.create-story-photo{
+    height:145px;
+    background:#ccd5dd;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+}
+
+.story-plus{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:32px;
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    background:var(--blue);
+    color:white;
+    border:4px solid white;
+    font-size:26px;
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-/* POSTS */
+/* COMPOSER */
 
-.post{
-    padding:0;
-    overflow:hidden;
+.composer{
+    background:white;
+    padding:12px;
+    margin-bottom:9px;
 }
 
-.post-head{
+.composer-top{
     display:flex;
     align-items:center;
     gap:10px;
-    padding:12px;
 }
 
-.post-user{
+.profile-photo{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#ddd;
+}
+
+.profile-photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+}
+
+.composer-input{
+    flex:1;
+    border:0;
+    border-radius:30px;
+    background:#f0f2f5;
+    padding:14px 17px;
+    font-size:16px;
+    color:#555;
+    text-align:left;
+    cursor:pointer;
+}
+
+.composer-divider{
+    height:1px;
+    background:#e5e5e5;
+    margin:12px 0;
+}
+
+.composer-actions{
+    display:flex;
+    justify-content:space-around;
+}
+
+.composer-actions button{
+    flex:1;
+    border:0;
+    background:white;
+    padding:8px 3px;
+    font-size:14px;
+    font-weight:bold;
+    color:#505768;
+    cursor:pointer;
+}
+
+.composer-actions span{
+    font-size:20px;
+    margin-right:4px;
+}
+
+/* FEED */
+
+.post{
+    background:white;
+    margin-bottom:9px;
+}
+
+.post-header{
+    display:flex;
+    align-items:center;
+    padding:12px;
+    gap:10px;
+}
+
+.post-avatar{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+.post-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.post-info{
+    flex:1;
+}
+
+.post-name{
     font-size:15px;
     font-weight:bold;
 }
 
-.post-meta{
-    font-size:12px;
+.post-time{
     color:#65676b;
+    font-size:13px;
     margin-top:3px;
+}
+
+.more-btn{
+    border:0;
+    background:white;
+    color:#606770;
+    font-size:24px;
+    cursor:pointer;
 }
 
 .post-text{
     padding:0 12px 10px;
     font-size:16px;
-    line-height:1.5;
-    white-space:pre-wrap;
+    line-height:1.45;
 }
 
-.post-image{
+.post-photo{
     width:100%;
-    max-height:450px;
+    max-height:480px;
     object-fit:cover;
     display:block;
 }
 
 .post-stats{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     padding:9px 12px;
+    color:#65676b;
     font-size:14px;
-    color:#596273;
+}
+
+.reactions{
+    display:flex;
+    align-items:center;
+    gap:3px;
+}
+
+.reaction{
+    background:#1877f2;
+    border-radius:50%;
+    color:white;
+    padding:3px 5px;
+    font-size:12px;
 }
 
 .post-actions{
     display:flex;
-    justify-content:space-around;
     border-top:1px solid #eee;
-    padding:8px;
 }
 
 .post-actions button{
+    flex:1;
     background:white;
-    border:none;
-    padding:8px;
-    color:#606770;
+    border:0;
+    padding:12px 4px;
     font-size:14px;
     font-weight:bold;
+    color:#596273;
     cursor:pointer;
 }
 
@@ -344,126 +408,137 @@ main{
     color:#1877f2;
 }
 
-.comment-area{
+/* COMMENTS */
+
+.comments{
     padding:0 12px 10px;
 }
 
-.comment-area input{
+.comments input{
     width:100%;
-    padding:11px;
-    border:none;
-    border-radius:22px;
+    padding:11px 14px;
+    border:0;
+    border-radius:25px;
     background:#f0f2f5;
     outline:none;
 }
 
-/* OTHER PAGES */
-
-.list-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:12px;
-    border-bottom:1px solid #eee;
-}
-
-.list-item button{
-    margin-left:auto;
-    background:var(--green);
-    color:white;
-    border:none;
+.comment{
+    background:#f0f2f5;
+    border-radius:14px;
     padding:8px 12px;
-    border-radius:7px;
-    cursor:pointer;
+    margin:7px 0;
+    font-size:14px;
 }
 
-.primary{
-    width:100%;
-    background:var(--green);
-    color:white;
-    border:none;
-    padding:12px;
-    border-radius:8px;
+/* BOTTOM NAVIGATION */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:64px;
+    background:white;
+    border-top:1px solid #ddd;
+    display:flex;
+    justify-content:space-around;
+    z-index:200;
+}
+
+.bottom-nav button{
+    flex:1;
+    border:0;
+    background:white;
+    color:#606770;
+    font-size:12px;
     font-weight:bold;
     cursor:pointer;
 }
 
-/* PROFILE */
+.bottom-nav button span{
+    display:block;
+    font-size:24px;
+    margin-bottom:3px;
+}
+
+.bottom-nav button.active{
+    color:var(--green);
+}
+
+.bottom-nav button.active{
+    border-top:3px solid var(--green);
+}
+
+/* PROFILE PAGE */
 
 .profile-cover{
-    height:150px;
-    background:linear-gradient(120deg,#145700,#73a75c);
-    border-radius:10px;
+    height:180px;
+    background:linear-gradient(135deg,#075d12,#82bd69);
 }
 
-.profile-info{
+.profile-center{
     text-align:center;
-    margin-top:-40px;
+    margin-top:-48px;
 }
 
-.profile-info .avatar{
-    width:90px;
-    height:90px;
-    border:4px solid white;
+.profile-center .profile-photo{
+    width:100px;
+    height:100px;
+    min-width:100px;
     margin:auto;
-    font-size:40px;
+    border:4px solid white;
 }
 
-.profile-info h2{
+.profile-center h2{
     margin:10px;
 }
 
-.profile-info p{
-    color:#666;
+.profile-center p{
+    color:#65676b;
 }
 
-/* LOGIN */
+/* OTHER PAGES */
 
-.auth{
-    max-width:420px;
-    margin:40px auto;
-    padding:20px;
+.simple-card{
+    background:white;
+    padding:18px;
+    margin:10px;
+    border-radius:10px;
 }
 
-.auth h1{
-    text-align:center;
-    color:var(--green);
+.person{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
 }
 
-.auth p{
-    text-align:center;
-    color:#666;
-    margin:15px 0;
+.person button{
+    margin-left:auto;
+    border:0;
+    background:var(--green);
+    color:white;
+    padding:8px 13px;
+    border-radius:7px;
 }
 
-.auth input{
-    width:100%;
-    padding:13px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    margin:6px 0;
-    font-size:16px;
-}
-
-.small-link{
-    display:block;
-    text-align:center;
-    padding:15px;
-    color:var(--green);
-    cursor:pointer;
-}
-
-/* CREATE POST MODAL */
+/* MODAL */
 
 .modal{
     position:fixed;
     inset:0;
     background:#0007;
-    z-index:500;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    z-index:500;
     padding:15px;
+}
+
+.hidden{
+    display:none!important;
 }
 
 .modal-box{
@@ -474,40 +549,49 @@ main{
     padding:15px;
 }
 
-.modal-head{
+.modal-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:15px;
 }
 
-.modal-head button{
+.modal-header button{
+    border:0;
+    background:#eee;
+    border-radius:50%;
     width:35px;
     height:35px;
-    border:none;
-    border-radius:50%;
-    background:#eee;
     font-size:22px;
 }
 
 .modal textarea{
     width:100%;
     height:120px;
-    border:none;
+    border:0;
     outline:none;
     resize:vertical;
     font-size:17px;
 }
 
-.modal input[type=file]{
-    margin:12px 0;
+.modal input{
+    margin:10px 0;
 }
 
-/* TOAST */
+.primary{
+    width:100%;
+    background:var(--green);
+    color:white;
+    border:0;
+    padding:12px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
 
 .toast{
     position:fixed;
-    bottom:20px;
+    bottom:80px;
     left:50%;
     transform:translateX(-50%);
     background:#222;
@@ -517,6 +601,29 @@ main{
     z-index:1000;
     display:none;
 }
+
+/* LOGIN */
+
+.login-box{
+    max-width:420px;
+    margin:35px auto;
+    padding:20px;
+    background:white;
+    border-radius:12px;
+}
+
+.login-box h1{
+    color:var(--green);
+    text-align:center;
+}
+
+.login-box input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin:8px 0;
+}
 </style>
 </head>
 
@@ -524,87 +631,96 @@ main{
 
 <!-- HEADER -->
 
-<header>
-    <div class="brandrow">
+<div class="header">
+
+    <div class="header-top">
 
         <div class="logo">
             <div class="logo-circle">C</div>
             Connecta
         </div>
 
-        <div class="head-actions">
-            <button onclick="toast('Search coming soon')">⌕</button>
+        <div class="header-icons">
+
+            <button onclick="toast('Search coming soon')">
+                🔍
+            </button>
 
             <button onclick="showPage('messages')">
-                ◉
+                💬
                 <span class="badge">3</span>
             </button>
 
             <button onclick="showPage('notifications')">
-                ♧
+                🔔
                 <span class="badge">5</span>
             </button>
+
         </div>
 
     </div>
-</header>
 
-<!-- TOP NAVIGATION -->
+    <!-- TOP NAV -->
 
-<nav class="topnav" id="topnav">
+    <nav class="top-menu">
 
-    <button class="active" onclick="showPage('home',this)">
-        <span class="icon">⌂</span>
-        Home
-    </button>
+        <button class="active" onclick="showPage('home',this)">
+            <span class="icon">🏠</span>
+            Home
+        </button>
 
-    <button onclick="showPage('friends',this)">
-        <span class="icon">♧</span>
-        Friends
-    </button>
+        <button onclick="showPage('friends',this)">
+            <span class="icon">👥</span>
+            Friends
+        </button>
 
-    <button onclick="showPage('videos',this)">
-        <span class="icon">▶</span>
-        Videos
-    </button>
+        <button onclick="showPage('videos',this)">
+            <span class="icon">▶️</span>
+            Videos
+        </button>
 
-    <button onclick="showPage('market',this)">
-        <span class="icon">▣</span>
-        Marketplace
-    </button>
+        <button onclick="showPage('market',this)">
+            <span class="icon">🏪</span>
+            Marketplace
+        </button>
 
-    <button onclick="showPage('more',this)">
-        <span class="icon">☰</span>
-        More
-    </button>
+        <button onclick="showPage('more',this)">
+            <span class="icon">☰</span>
+            More
+        </button>
 
-</nav>
+    </nav>
+
+</div>
 
 <main>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 
-<section id="authPage" class="page active">
+<section id="login" class="page">
 
-    <div class="card auth">
+    <div class="login-box">
 
         <h1>Connecta</h1>
 
-        <p>Connect with people and share moments.</p>
+        <p style="text-align:center;margin:15px">
+            Connect with people.
+        </p>
 
-        <input id="authName" placeholder="Your name">
+        <input id="username" placeholder="Your name">
 
-        <input id="authEmail" placeholder="Email or phone">
+        <input id="email" placeholder="Email or phone">
 
-        <input id="authPassword" type="password" placeholder="Password">
+        <input id="password" type="password" placeholder="Password">
 
-        <button class="primary" onclick="login()">
-            Log in / Create account
+        <button class="primary" onclick="loginUser()">
+            Log in
         </button>
 
-        <span class="small-link" onclick="demoLogin()">
-            Continue as demo user
-        </span>
+        <p onclick="demoLogin()"
+           style="text-align:center;color:green;padding:15px;cursor:pointer">
+            Continue as demo
+        </p>
 
     </div>
 
@@ -612,60 +728,24 @@ main{
 
 <!-- HOME -->
 
-<section id="home" class="page">
+<section id="home" class="page active">
 
-    <!-- PROFILE AND COMPOSER FIRST -->
+    <!-- STORIES -->
 
-    <div class="card composer">
-
-        <div class="compose-row">
-
-            <div class="avatar" id="myAvatar">
-                👤
-            </div>
-
-            <button class="compose-input" onclick="openCreate()">
-                What's on your mind?
-            </button>
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="compose-actions">
-
-            <button onclick="openCreate()">
-                <span style="color:#ed3348">▶</span>
-                Live
-            </button>
-
-            <button onclick="openCreate(true)">
-                <span style="color:#19a45b">▧</span>
-                Photo
-            </button>
-
-            <button onclick="openCreate()">
-                <span style="color:#f0b400">☻</span>
-                Feeling
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- STORIES SECOND -->
-
-    <div class="card">
-
-        <h3 style="margin-bottom:10px;">Stories</h3>
+    <div class="stories-container">
 
         <div class="stories">
 
-            <div class="story" onclick="toast('Story creation coming soon')">
+            <div class="story create-story"
+                 onclick="toast('Story creator coming soon')">
 
-                <div class="story-photo">＋</div>
+                <div class="create-story-photo">
+                    👤
+                </div>
 
-                <div class="story-label">
+                <div class="story-plus">+</div>
+
+                <div class="story-overlay">
                     Create Story
                 </div>
 
@@ -673,11 +753,13 @@ main{
 
             <div class="story">
 
-                <div class="story-avatar">👩</div>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80">
 
-                <div class="story-photo">🌺</div>
+                <div class="story-profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80">
+                </div>
 
-                <div class="story-label">
+                <div class="story-overlay">
                     Jane Wanjiku
                 </div>
 
@@ -685,11 +767,13 @@ main{
 
             <div class="story">
 
-                <div class="story-avatar">👥</div>
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80">
 
-                <div class="story-photo">🏝️</div>
+                <div class="story-profile">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80">
+                </div>
 
-                <div class="story-label">
+                <div class="story-overlay">
                     Travel Kenya
                 </div>
 
@@ -697,11 +781,13 @@ main{
 
             <div class="story">
 
-                <div class="story-avatar">👩🏾</div>
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80">
 
-                <div class="story-photo">🌴</div>
+                <div class="story-profile">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=80">
+                </div>
 
-                <div class="story-label">
+                <div class="story-overlay">
                     Faith Achieng
                 </div>
 
@@ -709,15 +795,56 @@ main{
 
             <div class="story">
 
-                <div class="story-avatar">👨</div>
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80">
 
-                <div class="story-photo">🏞️</div>
+                <div class="story-profile">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80">
+                </div>
 
-                <div class="story-label">
-                    Tanzania
+                <div class="story-overlay">
+                    Brian
                 </div>
 
             </div>
+
+        </div>
+
+    </div>
+
+    <!-- COMPOSER -->
+
+    <div class="composer">
+
+        <div class="composer-top">
+
+            <div class="profile-photo">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80">
+            </div>
+
+            <button class="composer-input" onclick="openPost()">
+                What's on your mind?
+            </button>
+
+        </div>
+
+        <div class="composer-divider"></div>
+
+        <div class="composer-actions">
+
+            <button onclick="openPost()">
+                <span style="color:#f02849">📹</span>
+                Live
+            </button>
+
+            <button onclick="openPost(true)">
+                <span style="color:#45bd62">🖼️</span>
+                Photo
+            </button>
+
+            <button onclick="openPost()">
+                <span style="color:#f7b928">😊</span>
+                Feeling
+            </button>
 
         </div>
 
@@ -727,16 +854,29 @@ main{
 
     <div id="feed">
 
-        <div class="card post">
+        <!-- POST ONE -->
 
-            <div class="post-head">
+        <div class="post">
 
-                <div class="avatar">👩🏾</div>
+            <div class="post-header">
 
-                <div>
-                    <div class="post-user">Mercy Njeri</div>
-                    <div class="post-meta">2h · 🌎</div>
+                <div class="post-avatar">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80">
                 </div>
+
+                <div class="post-info">
+
+                    <div class="post-name">
+                        Mercy Njeri
+                    </div>
+
+                    <div class="post-time">
+                        2h · 🌍
+                    </div>
+
+                </div>
+
+                <button class="more-btn">•••</button>
 
             </div>
 
@@ -746,23 +886,21 @@ Good morning everyone! ☀️
 Have a wonderful day ahead. Keep smiling 😊
             </div>
 
-            <div class="post-image"
-                 style="height:280px;
-                 display:flex;
-                 align-items:center;
-                 justify-content:center;
-                 background:linear-gradient(135deg,#c5e6b6,#69a854);
-                 font-size:70px;">
-
-                🌸😊🌿
-
-            </div>
+            <img class="post-photo"
+                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85">
 
             <div class="post-stats">
-                👍 ❤️ 243
-                <span style="float:right">
+
+                <div class="reactions">
+                    <span class="reaction">👍</span>
+                    <span class="reaction">❤️</span>
+                    <span>243</span>
+                </div>
+
+                <div>
                     45 comments · 12 shares
-                </span>
+                </div>
+
             </div>
 
             <div class="post-actions">
@@ -771,37 +909,48 @@ Have a wonderful day ahead. Keep smiling 😊
                     👍 Like
                 </button>
 
-                <button onclick="focusComment(this)">
+                <button onclick="commentPost(this)">
                     💬 Comment
                 </button>
 
                 <button onclick="sharePost()">
-                    ↗ Share
+                    ↗️ Share
                 </button>
 
             </div>
 
-            <div class="comment-area">
+            <div class="comments">
 
                 <input placeholder="Write a comment..."
-                       onkeydown="if(event.key==='Enter') addComment(this)">
+                       onkeydown="if(event.key==='Enter')addComment(this)">
 
             </div>
 
         </div>
 
-        <!-- SAMPLE AD -->
+        <!-- AD POST -->
 
-        <div class="card post">
+        <div class="post">
 
-            <div class="post-head">
+            <div class="post-header">
 
-                <div class="avatar">🟢</div>
-
-                <div>
-                    <div class="post-user">Pesa Loan</div>
-                    <div class="post-meta">Sponsored · 🌎</div>
+                <div class="post-avatar">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80">
                 </div>
+
+                <div class="post-info">
+
+                    <div class="post-name">
+                        Pesa Loan
+                    </div>
+
+                    <div class="post-time">
+                        Sponsored · 🌍
+                    </div>
+
+                </div>
+
+                <button class="more-btn">•••</button>
 
             </div>
 
@@ -811,18 +960,8 @@ Get a loan today from KSh 1,000 to KSh 500,000.
 Fast, secure and easy!
             </div>
 
-            <div class="post-image"
-                 style="height:180px;
-                 display:flex;
-                 align-items:center;
-                 justify-content:center;
-                 background:#e8f5e8;
-                 color:#075d12;
-                 font-size:25px;
-                 font-weight:bold;">
-
-                Pesa Loan
-
+            <div style="background:#e7f5e7;padding:40px;text-align:center;color:#075d12;font-size:24px;font-weight:bold">
+                PESA LOAN
             </div>
 
             <div class="post-actions">
@@ -831,12 +970,12 @@ Fast, secure and easy!
                     👍 Like
                 </button>
 
-                <button onclick="focusComment(this)">
+                <button onclick="commentPost(this)">
                     💬 Comment
                 </button>
 
                 <button onclick="sharePost()">
-                    ↗ Share
+                    ↗️ Share
                 </button>
 
             </div>
@@ -851,25 +990,25 @@ Fast, secure and easy!
 
 <section id="friends" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
-        <h3>People you may know</h3>
+        <h3>Friends</h3>
 
-        <div class="list-item">
-            <div class="avatar">👩</div>
-            <b>Mary Njeri</b>
+        <div class="person">
+            <div class="profile-photo">👩</div>
+            Mary Njeri
             <button onclick="follow(this)">Follow</button>
         </div>
 
-        <div class="list-item">
-            <div class="avatar">👨</div>
-            <b>David Kimani</b>
+        <div class="person">
+            <div class="profile-photo">👨</div>
+            David Kimani
             <button onclick="follow(this)">Follow</button>
         </div>
 
-        <div class="list-item">
-            <div class="avatar">👩🏾</div>
-            <b>Grace Achieng</b>
+        <div class="person">
+            <div class="profile-photo">👩</div>
+            Grace Achieng
             <button onclick="follow(this)">Follow</button>
         </div>
 
@@ -881,16 +1020,16 @@ Fast, secure and easy!
 
 <section id="videos" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
         <h3>Videos</h3>
 
-        <p style="padding:15px;color:#666">
-            Videos and reels will appear here.
+        <p style="padding:20px">
+            Videos and Reels will appear here.
         </p>
 
         <button class="primary" onclick="toast('Video upload coming soon')">
-            ＋ Add Video
+            Upload Video
         </button>
 
     </div>
@@ -901,16 +1040,16 @@ Fast, secure and easy!
 
 <section id="market" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
         <h3>Marketplace</h3>
 
-        <p style="padding:15px;color:#666">
-            Discover products and services in your community.
+        <p style="padding:20px">
+            Buy and sell in your community.
         </p>
 
         <button class="primary" onclick="toast('Create listing coming soon')">
-            ＋ Create Listing
+            Create Listing
         </button>
 
     </div>
@@ -921,17 +1060,17 @@ Fast, secure and easy!
 
 <section id="notifications" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
         <h3>Notifications</h3>
 
-        <div class="list-item">
-            👍 Someone liked your post
-        </div>
+        <p style="padding:15px">
+            👍 Someone liked your post.
+        </p>
 
-        <div class="list-item">
-            👥 You have suggested friends
-        </div>
+        <p style="padding:15px">
+            👥 Someone followed you.
+        </p>
 
     </div>
 
@@ -941,12 +1080,12 @@ Fast, secure and easy!
 
 <section id="messages" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
         <h3>Messages</h3>
 
-        <p style="padding:15px;color:#666">
-            Your conversations will appear here.
+        <p style="padding:20px">
+            Your messages will appear here.
         </p>
 
     </div>
@@ -957,24 +1096,24 @@ Fast, secure and easy!
 
 <section id="more" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
         <h3>More</h3>
 
-        <div class="list-item" onclick="showPage('profile')">
+        <div class="person" onclick="showPage('profile')">
             👤 Profile
         </div>
 
-        <div class="list-item" onclick="showPage('notifications')">
+        <div class="person" onclick="showPage('notifications')">
             🔔 Notifications
         </div>
 
-        <div class="list-item" onclick="showPage('messages')">
+        <div class="person" onclick="showPage('messages')">
             💬 Messages
         </div>
 
-        <div class="list-item" onclick="logout()">
-            ↪ Log Out
+        <div class="person" onclick="logout()">
+            ↪ Logout
         </div>
 
     </div>
@@ -985,23 +1124,23 @@ Fast, secure and easy!
 
 <section id="profile" class="page">
 
-    <div class="card">
+    <div class="simple-card">
 
         <div class="profile-cover"></div>
 
-        <div class="profile-info">
+        <div class="profile-center">
 
-            <div class="avatar" id="profileAvatar">
-                👤
+            <div class="profile-photo">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80">
             </div>
 
-            <h2 id="profileName">Your Profile</h2>
+            <h2 id="profileName">Connecta User</h2>
 
             <p>Connecta Member</p>
 
         </div>
 
-        <div class="divider"></div>
+        <br>
 
         <button class="primary" onclick="toast('Edit profile coming soon')">
             Edit Profile
@@ -1009,39 +1148,60 @@ Fast, secure and easy!
 
     </div>
 
-    <div class="card">
-
-        <h3>Your Posts</h3>
-
-        <p style="padding:10px;color:#666">
-            Your posts will appear here.
-        </p>
-
-    </div>
-
 </section>
 
 </main>
 
-<!-- CREATE POST -->
+<!-- BOTTOM NAV -->
 
-<div id="createModal" class="modal hidden">
+<nav class="bottom-nav">
+
+    <button class="active" onclick="showPage('home',this)">
+        <span>🏠</span>
+        Home
+    </button>
+
+    <button onclick="showPage('friends',this)">
+        <span>👥</span>
+        Friends
+    </button>
+
+    <button onclick="showPage('videos',this)">
+        <span>▶️</span>
+        Videos
+    </button>
+
+    <button onclick="showPage('market',this)">
+        <span>🏪</span>
+        Marketplace
+    </button>
+
+    <button onclick="showPage('profile',this)">
+        <span>👤</span>
+        Profile
+    </button>
+
+</nav>
+
+<!-- POST MODAL -->
+
+<div id="postModal" class="modal hidden">
 
     <div class="modal-box">
 
-        <div class="modal-head">
+        <div class="modal-header">
 
             <h3>Create Post</h3>
 
-            <button onclick="closeCreate()">×</button>
+            <button onclick="closePost()">×</button>
 
         </div>
 
-        <textarea id="postText"
+        <textarea id="newPostText"
                   placeholder="What's on your mind?"></textarea>
 
         <input type="file"
-               id="postFile"
+               id="newPostPhoto"
                accept="image/*">
 
         <button class="primary" onclick="publishPost()">
@@ -1056,17 +1216,17 @@ Fast, secure and easy!
 
 <script>
 
-/* USER */
+/* LOGIN */
 
-let currentUser = localStorage.getItem("connectaUser") || "";
+let user = localStorage.getItem("connectaUser") || "";
 
-function login(){
+function loginUser(){
 
-    let name = document.getElementById("authName").value.trim();
-    let email = document.getElementById("authEmail").value.trim();
+    let name = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
 
     if(!email){
-        toast("Enter your email or phone");
+        toast("Enter email or phone");
         return;
     }
 
@@ -1074,7 +1234,7 @@ function login(){
         name = email.split("@")[0];
     }
 
-    currentUser = name;
+    user = name;
 
     localStorage.setItem("connectaUser",name);
 
@@ -1083,24 +1243,20 @@ function login(){
 
 function demoLogin(){
 
-    currentUser = "Demo User";
+    user = "Demo User";
 
-    localStorage.setItem("connectaUser",currentUser);
+    localStorage.setItem("connectaUser",user);
 
     startApp();
 }
 
 function startApp(){
 
-    document.getElementById("authPage").classList.remove("active");
+    document.getElementById("login").classList.remove("active");
 
     document.getElementById("home").classList.add("active");
 
-    document.getElementById("myAvatar").textContent = "🙂";
-
-    document.getElementById("profileName").textContent = currentUser;
-
-    document.getElementById("topnav").classList.remove("hidden");
+    document.getElementById("profileName").textContent=user;
 
 }
 
@@ -1108,133 +1264,150 @@ function startApp(){
 
 function showPage(id,button){
 
-    document.querySelectorAll(".page").forEach(page=>{
-        page.classList.remove("active");
+    document.querySelectorAll(".page").forEach(p=>{
+        p.classList.remove("active");
     });
 
-    const page = document.getElementById(id);
+    document.getElementById(id).classList.add("active");
 
-    if(page){
-        page.classList.add("active");
-    }
+    document.querySelectorAll(".top-menu button").forEach(b=>{
+        b.classList.remove("active");
+    });
 
-    document.querySelectorAll(".topnav button").forEach(btn=>{
-        btn.classList.remove("active");
+    document.querySelectorAll(".bottom-nav button").forEach(b=>{
+        b.classList.remove("active");
     });
 
     if(button){
         button.classList.add("active");
     }
 
-    if(id==="home" && !button){
-        document.querySelector(".topnav button").classList.add("active");
+    if(id==="home"){
+        document.querySelector(".top-menu button").classList.add("active");
+        document.querySelector(".bottom-nav button").classList.add("active");
     }
 
 }
 
 /* CREATE POST */
 
-function openCreate(photo=false){
+function openPost(photo=false){
 
-    document.getElementById("createModal").classList.remove("hidden");
+    document.getElementById("postModal").classList.remove("hidden");
 
     if(photo){
-        document.getElementById("postFile").click();
+        document.getElementById("newPostPhoto").click();
     }
 
 }
 
-function closeCreate(){
+function closePost(){
 
-    document.getElementById("createModal").classList.add("hidden");
+    document.getElementById("postModal").classList.add("hidden");
 
 }
 
 function publishPost(){
 
-    const text = document.getElementById("postText").value.trim();
+    let text=document.getElementById("newPostText").value.trim();
 
-    const file = document.getElementById("postFile").files[0];
+    let file=document.getElementById("newPostPhoto").files[0];
 
     if(!text && !file){
-        toast("Write something or select a photo");
+        toast("Write something or choose a photo");
         return;
     }
 
-    const card = document.createElement("div");
+    let post=document.createElement("div");
 
-    card.className = "card post";
+    post.className="post";
 
-    card.innerHTML = `
-        <div class="post-head">
-            <div class="avatar">🙂</div>
-            <div>
-                <div class="post-user"></div>
-                <div class="post-meta">Just now · 🌎</div>
+    post.innerHTML=`
+        <div class="post-header">
+
+            <div class="post-avatar">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80">
             </div>
+
+            <div class="post-info">
+
+                <div class="post-name"></div>
+
+                <div class="post-time">
+                    Just now · 🌍
+                </div>
+
+            </div>
+
+            <button class="more-btn">•••</button>
+
         </div>
 
         <div class="post-text"></div>
 
         <div class="post-actions">
+
             <button onclick="likePost(this)">👍 Like</button>
-            <button onclick="focusComment(this)">💬 Comment</button>
-            <button onclick="sharePost()">↗ Share</button>
+
+            <button onclick="commentPost(this)">💬 Comment</button>
+
+            <button onclick="sharePost()">↗️ Share</button>
+
         </div>
 
-        <div class="comment-area">
+        <div class="comments">
+
             <input placeholder="Write a comment..."
-            onkeydown="if(event.key==='Enter') addComment(this)">
+            onkeydown="if(event.key==='Enter')addComment(this)">
+
         </div>
     `;
 
-    card.querySelector(".post-user").textContent = currentUser || "Connecta User";
+    post.querySelector(".post-name").textContent=user || "Connecta User";
 
-    card.querySelector(".post-text").textContent = text;
+    post.querySelector(".post-text").textContent=text;
 
     if(file){
 
-        const image = document.createElement("img");
+        let img=document.createElement("img");
 
-        image.className = "post-image";
+        img.className="post-photo";
 
-        image.src = URL.createObjectURL(file);
+        img.src=URL.createObjectURL(file);
 
-        card.insertBefore(image,card.querySelector(".post-actions"));
+        post.insertBefore(img,post.querySelector(".post-actions"));
 
     }
 
-    document.getElementById("feed").prepend(card);
+    document.getElementById("feed").prepend(post);
 
-    document.getElementById("postText").value = "";
+    document.getElementById("newPostText").value="";
 
-    document.getElementById("postFile").value = "";
+    document.getElementById("newPostPhoto").value="";
 
-    closeCreate();
+    closePost();
 
-    toast("Post shared!");
+    toast("Post published!");
 
 }
 
 /* LIKE */
 
-function likePost(button){
+function likePost(btn){
 
-    button.classList.toggle("liked");
+    btn.classList.toggle("liked");
 
-    if(button.classList.contains("liked")){
-        button.textContent = "👍 Liked";
-    }else{
-        button.textContent = "👍 Like";
-    }
+    btn.textContent=btn.classList.contains("liked")
+        ?"❤️ Liked"
+        :"👍 Like";
 
 }
 
-/* COMMENT */
+/* COMMENTS */
 
-function focusComment(button){
+function commentPost(btn){
 
-    const input = button.closest(".post").querySelector("input");
+    let input=btn.closest(".post").querySelector("input");
 
     if(input){
         input.focus();
@@ -1244,23 +1417,19 @@ function focusComment(button){
 
 function addComment(input){
 
-    const value = input.value.trim();
+    let text=input.value.trim();
 
-    if(!value){
-        return;
-    }
+    if(!text)return;
 
-    const comment = document.createElement("div");
+    let comment=document.createElement("div");
 
-    comment.style.padding = "8px";
+    comment.className="comment";
 
-    comment.style.fontSize = "14px";
-
-    comment.textContent = (currentUser || "You") + ": " + value;
+    comment.textContent=(user||"You")+": "+text;
 
     input.parentElement.insertBefore(comment,input);
 
-    input.value = "";
+    input.value="";
 
 }
 
@@ -1272,12 +1441,12 @@ function sharePost(){
 
         navigator.share({
             title:"Connecta",
-            text:"Check out this post on Connecta!"
-        });
+            text:"Check out this Connecta post"
+        }).catch(()=>{});
 
     }else{
 
-        toast("Share this post with your friends");
+        toast("Share this post");
 
     }
 
@@ -1285,21 +1454,11 @@ function sharePost(){
 
 /* FOLLOW */
 
-function follow(button){
+function follow(btn){
 
-    if(button.textContent === "Follow"){
-
-        button.textContent = "Following";
-
-        toast("You are now following this person");
-
-    }else{
-
-        button.textContent = "Follow";
-
-        toast("Unfollowed");
-
-    }
+    btn.textContent=btn.textContent==="Follow"
+        ?"Following"
+        :"Follow";
 
 }
 
@@ -1309,15 +1468,13 @@ function logout(){
 
     localStorage.removeItem("connectaUser");
 
-    currentUser = "";
+    user="";
 
-    document.querySelectorAll(".page").forEach(page=>{
-        page.classList.remove("active");
+    document.querySelectorAll(".page").forEach(p=>{
+        p.classList.remove("active");
     });
 
-    document.getElementById("authPage").classList.add("active");
-
-    document.getElementById("topnav").classList.add("hidden");
+    document.getElementById("login").classList.add("active");
 
 }
 
@@ -1325,33 +1482,33 @@ function logout(){
 
 function toast(message){
 
-    const t = document.getElementById("toast");
+    let t=document.getElementById("toast");
 
-    t.textContent = message;
+    t.textContent=message;
 
-    t.style.display = "block";
+    t.style.display="block";
 
     clearTimeout(window.toastTimer);
 
-    window.toastTimer = setTimeout(()=>{
-        t.style.display = "none";
+    window.toastTimer=setTimeout(()=>{
+        t.style.display="none";
     },2500);
 
 }
 
-/* AUTO LOGIN */
+/* START */
 
-if(currentUser){
+if(user){
 
     startApp();
 
 }else{
 
-    document.getElementById("topnav").classList.add("hidden");
+    document.getElementById("login").classList.add("active");
 
 }
 
 </script>
 
 </body>
-  </html>
+    </html>
